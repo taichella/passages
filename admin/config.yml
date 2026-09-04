@@ -2,6 +2,8 @@ backend:
   name: github
   repo: taichella/passages
   branch: main
+  base_url: https://passages.mimesis-asso.fr
+  auth_endpoint: api/auth
 
 # Dossier des médias pour téléverser de nouvelles images via le CMS
 media_folder: "images"
