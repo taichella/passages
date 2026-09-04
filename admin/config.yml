@@ -1,0 +1,58 @@
+backend:
+  name: github
+  repo: taichella/passages
+  branch: main
+
+# Dossier des médias pour téléverser de nouvelles images via le CMS
+media_folder: "images"
+public_folder: "images"
+
+locale: "fr"
+display_url: "https://passages.mimesis-asso.fr"
+logo_url: "https://passages.mimesis-asso.fr/images/logo-passages-color-main.svg"
+
+collections:
+  - name: "pages"
+    label: "Contenu des Pages"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "general"
+        label: "1. Coordonnées & Informations Générales"
+        file: "content/general.json"
+        fields:
+          - { name: "telephone", label: "Numéro de téléphone affiché", widget: "string" }
+          - { name: "telephone_link", label: "Lien d'appel (international, ex: +33686413059)", widget: "string" }
+          - { name: "email", label: "Adresse e-mail de contact", widget: "string" }
+          - { name: "adresse", label: "Adresse physique", widget: "string" }
+          - { name: "permanence_horaires", label: "Horaires de la permanence téléphonique", widget: "string" }
+          - { name: "territoire", label: "Territoire d'intervention", widget: "string" }
+
+      - name: "home"
+        label: "2. Page d'Accueil (Hero & Sections)"
+        file: "content/home.json"
+        fields:
+          - { name: "hero_tag", label: "Badge en haut du Hero", widget: "string" }
+          - { name: "hero_title", label: "Titre principal du Hero", widget: "string" }
+          - { name: "hero_subtitle", label: "Sous-titre descriptif", widget: "text" }
+          - { name: "hero_cta_primary", label: "Texte du bouton principal (Demander une médiation)", widget: "string" }
+          - { name: "hero_cta_secondary", label: "Texte du bouton secondaire (Découvrir le dispositif)", widget: "string" }
+          - { name: "solliciter_title", label: "Titre de la section : Quand solliciter", widget: "string" }
+          - { name: "solliciter_subtitle", label: "Sous-titre de la section : Quand solliciter", widget: "text" }
+          - { name: "soutenir_title", label: "Titre de la section Soutenir", widget: "string" }
+          - { name: "soutenir_text", label: "Texte de la section Soutenir", widget: "text" }
+
+      - name: "dispositif"
+        label: "3. Page Le Dispositif (Chiffres & Volets)"
+        file: "content/dispositif.json"
+        fields:
+          - { name: "stat_seances", label: "Chiffre : Séances de médiation", widget: "string" }
+          - { name: "stat_seances_label", label: "Libellé : Séances de médiation", widget: "string" }
+          - { name: "stat_professionnels", label: "Chiffre : Professionnels sensibilisés", widget: "string" }
+          - { name: "stat_professionnels_label", label: "Libellé : Professionnels sensibilisés", widget: "string" }
+          - { name: "stat_territoires", label: "Chiffre : Bassins de vie", widget: "string" }
+          - { name: "stat_territoires_label", label: "Libellé : Bassins de vie", widget: "string" }
+          - { name: "volet1_title", label: "Titre du Volet 1", widget: "string" }
+          - { name: "volet2_title", label: "Titre du Volet 2", widget: "string" }
+          - { name: "volet3_title", label: "Titre du Volet 3", widget: "string" }

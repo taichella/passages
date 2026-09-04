@@ -1,6 +1,7 @@
 /**
  * PassageS - Script Principal
- * Interactivité globale, initialisation des icônes Lucide et gestion de l'interface
+ * Interactivité globale, initialisation des icônes Lucide, gestion du Header
+ * et hydratation dynamique des contenus modifiés via le CMS (Decap / Sveltia)
  */
 
 (function () {
@@ -62,5 +63,68 @@
       }
     }
   })();
+
+  // 5. Hydratation automatique des données éditées via le CMS (/admin)
+  function hydrateCmsContent() {
+    var path = window.location.pathname;
+    var isIndex = path.endsWith('/') || path.endsWith('index.html') || path === '';
+    var isDispositif = path.endsWith('dispositif.html');
+
+    // Informations générales et coordonnées (sur toutes les pages)
+    fetch('content/general.json')
+      .then(function(res) { return res.ok ? res.json() : null; })
+      .then(function(data) {
+        if (!data) return;
+        Object.keys(data).forEach(function(key) {
+          var els = document.querySelectorAll('[data-cms="' + key + '"]');
+          els.forEach(function(el) {
+            if (key === 'telephone' && el.tagName === 'A') {
+              el.textContent = data[key];
+              if (data.telephone_link) el.href = 'tel:' + data.telephone_link;
+            } else if (key === 'email' && el.tagName === 'A') {
+              el.textContent = data[key];
+              el.href = 'mailto:' + data[key];
+            } else {
+              el.textContent = data[key];
+            }
+          });
+        });
+      })
+      .catch(function() {});
+
+    // Contenus de la page d'accueil
+    if (isIndex) {
+      fetch('content/home.json')
+        .then(function(res) { return res.ok ? res.json() : null; })
+        .then(function(data) {
+          if (!data) return;
+          Object.keys(data).forEach(function(key) {
+            var el = document.querySelector('[data-cms="' + key + '"]');
+            if (el) el.textContent = data[key];
+          });
+        })
+        .catch(function() {});
+    }
+
+    // Contenus de la page Le Dispositif
+    if (isDispositif) {
+      fetch('content/dispositif.json')
+        .then(function(res) { return res.ok ? res.json() : null; })
+        .then(function(data) {
+          if (!data) return;
+          Object.keys(data).forEach(function(key) {
+            var el = document.querySelector('[data-cms="' + key + '"]');
+            if (el) el.textContent = data[key];
+          });
+        })
+        .catch(function() {});
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', hydrateCmsContent);
+  } else {
+    hydrateCmsContent();
+  }
 
 })();
