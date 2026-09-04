@@ -30,6 +30,23 @@
 
   <!-- Feuille de style principale unifiée et modularisée -->
   <link rel="stylesheet" href="css/style.css">
+  <!-- ═══════════════════════════════════════════
+       ANALYTICS: GOOGLE ANALYTICS & VERCEL WEB ANALYTICS
+  ═══════════════════════════════════════════ -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-XXXXXXXXXX");
+  </script>
+
+  <!-- Vercel Web Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
   <!-- ═══════════════════════════════════════════
