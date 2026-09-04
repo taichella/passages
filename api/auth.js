@@ -18,6 +18,12 @@ function getClientId() {
       if (val && typeof val === 'string' && val.trim()) return val.trim();
     }
   }
+  // Auto-détection si le Client ID (ex: Ov23liyGZIA9wtELQIpG) a été collé dans le nom de la variable
+  for (const key of Object.keys(process.env)) {
+    if (/^(Ov|Iv)[a-zA-Z0-9_-]{15,25}$/.test(key)) {
+      return key.trim();
+    }
+  }
   return null;
 }
 
@@ -42,22 +48,13 @@ module.exports = (req, res) => {
           h2 { color: #4500A7; margin-top: 0; }
           code { background: #F2ECFC; color: #4500A7; padding: 3px 8px; border-radius: 6px; font-size: 15px; font-weight: bold; }
           .list { background: #fafafa; border: 1px solid #eee; padding: 14px 18px; border-radius: 12px; margin: 16px 0; font-family: monospace; font-size: 13px; }
-          .btn { display: inline-block; background: #4500A7; color: #fff; text-decoration: none; padding: 12px 20px; border-radius: 999px; font-weight: bold; margin-top: 14px; }
         </style>
       </head>
       <body>
         <div class="card">
-          <h2>Variables Vercel non détectées</h2>
-          <p>Le serveur n'a pas encore reçu la variable <code>OAUTH_CLIENT_ID</code>.</p>
-          <p><strong>Variables actuellement visibles par la fonction Vercel :</strong></p>
-          <div class="list">${visibleKeys.length > 0 ? visibleKeys.join('<br>') : '<em>(Aucune variable personnalisée trouvée)</em>'}</div>
-          <p><strong>Comment corriger :</strong></p>
-          <ol style="line-height: 1.8; padding-left: 20px;">
-            <li>Dans Vercel &gt; <strong>Settings</strong> &gt; <strong>Environment Variables</strong> :</li>
-            <li>Assurez-vous que le nom est exactement <code>OAUTH_CLIENT_ID</code>.</li>
-            <li>Assurez-vous que la case <strong>Production</strong> est bien cochée.</li>
-            <li>Après avoir sauvegardé, ce nouveau commit va déclencher un <strong>nouveau déploiement automatique</strong>.</li>
-          </ol>
+          <h2>Variable OAUTH_CLIENT_ID non trouvée</h2>
+          <p>Le serveur n'a pas pu identifier le Client ID.</p>
+          <div class="list">${visibleKeys.length > 0 ? visibleKeys.join('<br>') : '(Aucune variable trouvée)'}</div>
         </div>
       </body>
       </html>

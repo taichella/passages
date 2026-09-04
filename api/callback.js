@@ -18,6 +18,11 @@ function getClientId() {
       if (val && typeof val === 'string' && val.trim()) return val.trim();
     }
   }
+  for (const key of Object.keys(process.env)) {
+    if (/^(Ov|Iv)[a-zA-Z0-9_-]{15,25}$/.test(key)) {
+      return key.trim();
+    }
+  }
   return null;
 }
 
@@ -40,6 +45,15 @@ function getClientSecret() {
       if (val && typeof val === 'string' && val.trim()) return val.trim();
     }
   }
+  // Fallback: Si le Client ID a été mis en Nom de variable, sa Valeur est souvent le Client Secret !
+  for (const key of Object.keys(process.env)) {
+    if (/^(Ov|Iv)[a-zA-Z0-9_-]{15,25}$/.test(key)) {
+      const val = process.env[key];
+      if (val && typeof val === 'string' && val.trim() && val.trim() !== 'OAUTH_CLIENT_ID') {
+        return val.trim();
+      }
+    }
+  }
   return null;
 }
 
@@ -55,7 +69,13 @@ module.exports = async (req, res) => {
 
   if (!clientId || !clientSecret) {
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    return res.status(500).send('<p style="font-family: sans-serif; padding: 20px;">OAUTH_CLIENT_ID ou OAUTH_CLIENT_SECRET non configuré sur Vercel.</p>');
+    return res.status(500).send(`
+      <div style="font-family: sans-serif; padding: 30px; max-width: 600px; margin: auto;">
+        <h2 style="color: #e53e3e;">Erreur de configuration Vercel</h2>
+        <p>Le Client Secret n'a pas été trouvé dans les variables d'environnement Vercel.</p>
+        <p>Vérifiez que vous avez bien ajouté <code>OAUTH_CLIENT_SECRET</code> dans Vercel &gt; Settings &gt; Environment Variables.</p>
+      </div>
+    `);
   }
 
   try {
