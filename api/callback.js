@@ -1,7 +1,52 @@
+function getClientId() {
+  const candidates = [
+    process.env.OAUTH_CLIENT_ID,
+    process.env.GITHUB_CLIENT_ID,
+    process.env.CLIENT_ID,
+    process.env.NEXT_PUBLIC_OAUTH_CLIENT_ID,
+    process.env.OAUTH_ID,
+    process.env.GITHUB_ID,
+    process.env.oauth_client_id,
+    process.env.github_client_id
+  ];
+  for (const c of candidates) {
+    if (c && typeof c === 'string' && c.trim()) return c.trim();
+  }
+  for (const key of Object.keys(process.env)) {
+    if (/^(oauth|github)?_?client_?id$/i.test(key)) {
+      const val = process.env[key];
+      if (val && typeof val === 'string' && val.trim()) return val.trim();
+    }
+  }
+  return null;
+}
+
+function getClientSecret() {
+  const candidates = [
+    process.env.OAUTH_CLIENT_SECRET,
+    process.env.GITHUB_CLIENT_SECRET,
+    process.env.CLIENT_SECRET,
+    process.env.OAUTH_SECRET,
+    process.env.GITHUB_SECRET,
+    process.env.oauth_client_secret,
+    process.env.github_client_secret
+  ];
+  for (const c of candidates) {
+    if (c && typeof c === 'string' && c.trim()) return c.trim();
+  }
+  for (const key of Object.keys(process.env)) {
+    if (/^(oauth|github)?_?client_?secret$/i.test(key)) {
+      const val = process.env[key];
+      if (val && typeof val === 'string' && val.trim()) return val.trim();
+    }
+  }
+  return null;
+}
+
 module.exports = async (req, res) => {
   const code = req.query.code;
-  const clientId = process.env.OAUTH_CLIENT_ID || process.env.GITHUB_CLIENT_ID;
-  const clientSecret = process.env.OAUTH_CLIENT_SECRET || process.env.GITHUB_CLIENT_SECRET;
+  const clientId = getClientId();
+  const clientSecret = getClientSecret();
 
   if (!code) {
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
