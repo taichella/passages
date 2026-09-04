@@ -1,0 +1,26 @@
+/* ═════════════════════════════════════════════════════════════
+   PASSAGES - DESIGN TOKENS & VARIABLES
+   ═════════════════════════════════════════════════════════════ */
+:root {
+      --color-primary: #4500A7;
+      --color-primary-dark: #37027F;
+      --color-accent: #26EFDC;
+      --color-accent-dark: #14BFAF;
+      --color-purple: #6402EE;
+      --color-purple-hover: #4500A7;
+      --color-bg-light: #F6F2FF;
+      --color-bg-subtle: #F9F6FE;
+      --color-bg-contrast: #F2ECFC;
+      --color-border-light: #E7DEFB;
+      --color-border-dark: #7C46E8;
+      --color-text-main: #16121F;
+      --color-text-muted: #625A72;
+      --color-text-light: #E0D3FF;
+      --color-text-subtle: #B9A4EE;
+      --color-white: #FFFFFF;
+      --font-cairo: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      --transition-smooth: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-card: 0 10px 30px rgba(22, 18, 31, 0.08);
+      --shadow-hover: 0 18px 40px rgba(69, 0, 167, 0.12);
+      --container-max: 1160px;
+    }
