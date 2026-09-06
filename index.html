@@ -57,6 +57,11 @@
       <a href="index.html" class="header-brand" aria-label="PassageS Accueil">
         <img src="images/logo-passages-color-main.svg" alt="PassageS" class="header-logo">
       </a>
+      <button class="nav-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mainNav">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
       <nav class="site-nav" id="mainNav">
         <a href="index.html" class="nav-link active">Accueil</a>
         <a href="dispositif.html" class="nav-link ">Le dispositif</a>
@@ -510,56 +515,101 @@
   ═══════════════════════════════════════════ -->
   <footer class="site-footer">
     <div class="footer-container">
-      <div class="footer-top">
-        <div class="footer-col-main">
-          <div class="footer-brand">
+      <div class="footer-grid">
+        <!-- Colonne 1 : Identité & Description -->
+        <div class="footer-col footer-col-brand">
+          <a href="index.html" class="footer-brand" aria-label="PassageS">
             <img src="images/logo-passages-color-secondary.svg" alt="PassageS" class="footer-logo">
-          </div>
+          </a>
           <p class="footer-desc">
-            Dispositif expérimental de médiation transculturelle en santé et travail social en Drôme-Ardèche. Porté par l'association Mimesis avec l'expertise du Centre Babel et le soutien de l'Agence Régionale de Santé (ARS) Auvergne-Rhône-Alpes.
+            Dispositif de médiation transculturelle en Drôme-Ardèche, porté par l'association Mimesis en partenariat avec le Centre Babel et le soutien de l'ARS Auvergne-Rhône-Alpes.
           </p>
-          <div style="display: flex; gap: 20px; align-items: center; margin-top: 24px; flex-wrap: wrap;">
-            <img src="images/logo-mimesis-color-black.svg" alt="Association Mimesis" style="height: 38px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;">
-            <img src="images/logo-centre-babel-color-black.svg" alt="Centre Babel" style="height: 38px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;">
-            <img src="images/logo-ars.svg" alt="ARS Auvergne-Rhône-Alpes" style="height: 38px; width: auto; background: #fff; padding: 4px 8px; border-radius: 6px;">
-          </div>
         </div>
 
-        <div class="footer-col-nav">
-          <p class="footer-heading">Navigation</p>
+        <!-- Colonne 2 : Le site / Navigation -->
+        <div class="footer-col footer-col-nav">
+          <span class="tag-category cyan">Le site</span>
           <div class="footer-links">
             <a href="index.html" class="footer-link">Accueil</a>
             <a href="dispositif.html" class="footer-link">Le dispositif</a>
+            <a href="demande.html" class="footer-link">Demander une médiation</a>
             <a href="index.html#partenaires" class="footer-link">Partenaires</a>
             <a href="index.html#soutenir" class="footer-link">Soutenir le projet</a>
-            <a href="demande.html" class="footer-link">Demande d'intervention</a>
             <a href="en.html" class="footer-link">English version</a>
           </div>
         </div>
 
-        <div class="footer-col-nav">
-          <p class="footer-heading">Contact & Permanence</p>
+        <!-- Colonne 3 : Contact & Permanence -->
+        <div class="footer-col footer-col-contact">
+          <span class="tag-category cyan">Contact & Permanence</span>
           <div class="footer-links">
-            <a href="mailto:passages26@mimesis-asso.fr" class="footer-link" data-cms="email">passages26@mimesis-asso.fr</a>
-            <a href="tel:+33686413059" class="footer-link" data-cms="telephone">06 86 41 30 59</a>
-            <span class="footer-link" style="color: var(--color-text-subtle);" data-cms="adresse">Mimesis, 31 rue Jean Bertin, 26000 Valence</span>
-            <span class="footer-link" style="color: var(--color-text-subtle);" data-cms="permanence_horaires">Permanence tél. : mardi & jeudi (9h-12h)</span>
+            <a href="mailto:passages26@mimesis-asso.fr" class="footer-link footer-contact-item" data-cms="email">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+              <span>passages26@mimesis-asso.fr</span>
+            </a>
+            <a href="tel:+33686413059" class="footer-link footer-contact-item" data-cms="telephone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>06 86 41 30 59</span>
+            </a>
+            <div class="footer-contact-item" data-cms="adresse">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Mimesis, 31 rue Jean Bertin, 26000 Valence</span>
+            </div>
+            <div class="footer-contact-item" data-cms="permanence_horaires">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span>Permanence tél. : mardi & jeudi (9h-12h)</span>
+            </div>
+            <div class="footer-social-row">
+              <a href="https://mimesis-asso.fr/" target="_blank" rel="noopener" class="footer-link">mimesis-asso.fr</a>
+              <span class="footer-social-sep">·</span>
+              <a href="https://www.instagram.com/mimesis_a_a_r/" target="_blank" rel="noopener" class="footer-link">Instagram</a>
+              <span class="footer-social-sep">·</span>
+              <a href="https://www.facebook.com/" target="_blank" rel="noopener" class="footer-link">Facebook</a>
+            </div>
           </div>
         </div>
 
-        <div class="footer-col-newsletter">
-          <p class="footer-heading">Lettre d'information</p>
-          <p class="footer-text">Recevez les synthèses des séminaires, les actualités du dispositif et les invitations aux formations.</p>
-          <form class="footer-form" onsubmit="event.preventDefault(); window.handleNewsletter();">
-            <input type="email" id="newsletterEmail" placeholder="Votre adresse e-mail" class="footer-input" required>
-            <button type="submit" id="newsletterBtn" class="footer-btn">S'inscrire</button>
-          </form>
+        <!-- Colonne 4 : Avec le soutien de (Logos officiels) -->
+        <div class="footer-col footer-col-partners">
+          <span class="tag-category cyan">Avec le soutien de</span>
+          <div class="footer-partners-wrap">
+            <span class="footer-partner-badge" title="Association Mimesis">
+              <img src="images/logo-mimesis-color-black.svg" alt="Association Mimesis">
+            </span>
+            <span class="footer-partner-badge" title="Centre Babel">
+              <img src="images/logo-centre-babel-color-black.svg" alt="Centre Babel">
+            </span>
+            <span class="footer-partner-badge" title="ARS Auvergne-Rhône-Alpes">
+              <img src="images/logo-ars.svg" alt="ARS Auvergne-Rhône-Alpes">
+            </span>
+          </div>
+          <a href="index.html#partenaires" class="footer-action-link">
+            <span>Voir tous les partenaires</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
         </div>
       </div>
 
+      <!-- Carte d'inscription Newsletter -->
+      <div class="footer-newsletter-card">
+        <div class="footer-newsletter-text">
+          <p class="footer-newsletter-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+            <span>Lettre d'information</span>
+          </p>
+          <p class="footer-newsletter-desc">Recevez les synthèses des séminaires, les actualités du dispositif et les invitations aux formations.</p>
+        </div>
+        <form class="footer-form" onsubmit="event.preventDefault(); window.handleNewsletter();">
+          <input type="email" id="newsletterEmail" placeholder="Votre adresse e-mail" class="footer-input" required aria-label="Votre adresse e-mail">
+          <button type="submit" id="newsletterBtn" class="footer-btn">S'inscrire</button>
+        </form>
+      </div>
+
+      <!-- Pied de page inférieur (Copyright & Mentions) -->
       <div class="footer-bottom">
-        <p class="footer-copy">© 2026 PassageS / Association Mimesis. Tous droits réservés.</p>
-        <div class="footer-legal">
+        <p class="footer-copy">© 2026 PassageS · Association Mimesis. Tous droits réservés.</p>
+        <p class="footer-territory">Valence · Romans · Privas · Montélimar</p>
+        <div class="footer-legal-links">
           <a href="index.html" class="footer-legal-link">Accueil</a>
           <a href="dispositif.html" class="footer-legal-link">Le Dispositif</a>
           <a href="demande.html" class="footer-legal-link">Demande de médiation</a>

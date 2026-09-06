@@ -34,6 +34,88 @@
     onScroll();
   }
 
+  // 2b. Gestionnaire du Menu Hamburger & Navigation Mobile
+  function initMobileMenu() {
+    var menuToggle = document.getElementById('menuToggle');
+    var mainNav = document.getElementById('mainNav');
+    if (!menuToggle || !mainNav) return;
+
+    // Créer ou récupérer le voile d'arrière-plan (backdrop)
+    var backdrop = document.getElementById('navBackdrop');
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.id = 'navBackdrop';
+      backdrop.className = 'nav-backdrop';
+      backdrop.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(backdrop);
+    }
+
+    function openMenu() {
+      menuToggle.classList.add('is-active');
+      menuToggle.setAttribute('aria-expanded', 'true');
+      var lang = document.documentElement.lang || 'fr';
+      menuToggle.setAttribute('aria-label', lang === 'en' ? 'Close menu' : 'Fermer le menu');
+      mainNav.classList.add('is-open');
+      document.body.classList.add('menu-open');
+    }
+
+    function closeMenu() {
+      menuToggle.classList.remove('is-active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      var lang = document.documentElement.lang || 'fr';
+      menuToggle.setAttribute('aria-label', lang === 'en' ? 'Open menu' : 'Ouvrir le menu');
+      mainNav.classList.remove('is-open');
+      document.body.classList.remove('menu-open');
+    }
+
+    function toggleMenu() {
+      var isOpen = mainNav.classList.contains('is-open');
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    }
+
+    menuToggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      toggleMenu();
+    });
+
+    backdrop.addEventListener('click', closeMenu);
+
+    // Fermer le menu lors d'un clic sur un lien dans la navigation
+    var navLinks = mainNav.querySelectorAll('a');
+    navLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (window.innerWidth <= 840) {
+          closeMenu();
+        }
+      });
+    });
+
+    // Fermer le menu avec la touche Échap
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mainNav.classList.contains('is-open')) {
+        closeMenu();
+        menuToggle.focus();
+      }
+    });
+
+    // Fermer automatiquement si on redimensionne sur grand écran (> 840px)
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 840 && mainNav.classList.contains('is-open')) {
+        closeMenu();
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileMenu);
+  } else {
+    initMobileMenu();
+  }
+
   // 3. Gestionnaire de la Newsletter dans le footer
   window.handleNewsletter = function () {
     var emailInput = document.getElementById('newsletterEmail');
