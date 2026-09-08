@@ -140,13 +140,13 @@
     successDiv.className = 'newsletter-success-box';
     successDiv.setAttribute('role', 'status');
 
-    var title = isEn ? 'Subscription recorded!' : 'Inscription enregistrée !';
+    var title = isEn ? 'Subscription confirmed!' : 'Inscription validée !';
     var emailText = email ? ' à <strong>' + escapeHtml(email) + '</strong>' : '';
     var emailTextEn = email ? ' to <strong>' + escapeHtml(email) + '</strong>' : '';
 
     var msg = isEn
-      ? 'A confirmation email has been sent' + emailTextEn + '. Please <strong>click the confirmation link in the email</strong> to validate your subscription.'
-      : 'Un e-mail de confirmation vient d\'être envoyé' + emailText + '. Veuillez <strong>cliquer sur le lien reçu</strong> pour valider définitivement votre inscription.';
+      ? 'A confirmation email has been sent' + emailTextEn + '. Thank you for subscribing to PassageS!'
+      : 'Un e-mail de confirmation vient de vous être envoyé' + emailText + '. Merci pour votre inscription à la lettre PassageS !';
 
     var spamNotice = isEn
       ? '(Please check your spam or junk folder if you don\'t see it within a few minutes)'
