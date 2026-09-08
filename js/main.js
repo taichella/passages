@@ -117,6 +117,114 @@
   }
 
   // 3. Gestionnaire de la Newsletter (carte Soutenir et footer avec mécanisme Brevo)
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  function renderNewsletterSuccessUI(form, email) {
+    if (!form) return;
+    var container = form.parentElement;
+    if (!container) return;
+
+    // Éviter les doublons si la boîte de succès existe déjà dans ce conteneur
+    if (container.querySelector('.newsletter-success-box')) return;
+
+    var isEn = document.documentElement.lang === 'en';
+    var successDiv = document.createElement('div');
+    successDiv.className = 'newsletter-success-box';
+    successDiv.setAttribute('role', 'status');
+
+    var title = isEn ? 'Subscription recorded!' : 'Inscription enregistrée !';
+    var emailText = email ? ' à <strong>' + escapeHtml(email) + '</strong>' : '';
+    var emailTextEn = email ? ' to <strong>' + escapeHtml(email) + '</strong>' : '';
+
+    var msg = isEn
+      ? 'A confirmation email has been sent' + emailTextEn + '. Please <strong>click the confirmation link in the email</strong> to validate your subscription.'
+      : 'Un e-mail de confirmation vient d\'être envoyé' + emailText + '. Veuillez <strong>cliquer sur le lien reçu</strong> pour valider définitivement votre inscription.';
+
+    var spamNotice = isEn
+      ? '(Please check your spam or junk folder if you don\'t see it within a few minutes)'
+      : '(Pensez à vérifier vos courriers indésirables / spams si besoin)';
+
+    var changeLinkText = isEn ? 'Use another email address' : 'Inscrire une autre adresse e-mail';
+
+    successDiv.innerHTML =
+      '<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">' +
+        '<span style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: #26EFDC; color: #16121F; flex-shrink: 0;">' +
+          '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>' +
+        '</span>' +
+        '<strong style="color: #26EFDC; font-size: 15px; font-family: var(--font-cairo);">' + title + '</strong>' +
+      '</div>' +
+      '<p style="margin: 0; font-size: 13.5px; line-height: 1.5; color: #F0ECF8;">' + msg + '</p>' +
+      '<p style="margin: 6px 0 0 0; font-size: 11.5px; line-height: 1.4; color: #C9B4FF;"><em>' + spamNotice + '</em></p>' +
+      '<button type="button" class="newsletter-reset-btn" style="background: none; border: none; color: #26EFDC; text-decoration: underline; font-size: 11.5px; cursor: pointer; padding: 0; margin-top: 8px; font-family: inherit; display: inline-block;">' + changeLinkText + '</button>';
+
+    // Masquer le formulaire (le champ email disparaît pour cet utilisateur)
+    form.style.display = 'none';
+
+    // Masquer le paragraphe RGPD dans ce conteneur
+    var rgpd = container.querySelector('.footer-newsletter-rgpd');
+    if (rgpd) rgpd.style.display = 'none';
+
+    // Insérer le message de succès à la place du formulaire
+    form.insertAdjacentElement('afterend', successDiv);
+
+    // Bouton de réinitialisation si l'utilisateur souhaite inscrire une autre adresse
+    var resetBtn = successDiv.querySelector('.newsletter-reset-btn');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function () {
+        try {
+          localStorage.removeItem('passages_newsletter_subscribed');
+          localStorage.removeItem('passages_newsletter_email');
+        } catch (e) {}
+
+        document.querySelectorAll('.newsletter-success-box').forEach(function (box) {
+          box.remove();
+        });
+        document.querySelectorAll('form[action*="sibforms.com"]').forEach(function (f) {
+          f.style.display = '';
+          var input = f.querySelector('input[name="EMAIL"]') || f.querySelector('input[type="email"]');
+          if (input) {
+            input.readOnly = false;
+            input.value = '';
+          }
+          var btn = f.querySelector('button[type="submit"]');
+          if (btn) {
+            btn.disabled = false;
+            btn.textContent = isEn ? 'Subscribe' : 'S\'inscrire';
+            btn.style.background = '';
+            btn.style.color = '';
+          }
+          var r = f.parentElement ? f.parentElement.querySelector('.footer-newsletter-rgpd') : null;
+          if (r) r.style.display = '';
+        });
+      });
+    }
+  }
+
+  function initNewsletterState() {
+    try {
+      if (localStorage.getItem('passages_newsletter_subscribed') === 'true') {
+        var savedEmail = localStorage.getItem('passages_newsletter_email') || '';
+        document.querySelectorAll('form[action*="sibforms.com"]').forEach(function (form) {
+          renderNewsletterSuccessUI(form, savedEmail);
+        });
+      }
+    } catch (e) {}
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNewsletterState);
+  } else {
+    initNewsletterState();
+  }
+
   window.handleNewsletter = function (formEl) {
     var form = formEl && formEl.nodeType === 1 ? formEl : (typeof event !== 'undefined' && event && event.target ? event.target : null);
     var emailInput = form ? (form.querySelector('input[name="EMAIL"]') || form.querySelector('input[type="email"]')) : document.getElementById('newsletterEmail');
@@ -131,16 +239,32 @@
     }
 
     if (emailInput && emailInput.value && (!emailInput.type || emailInput.type !== 'email' || emailInput.checkValidity())) {
-      var isEn = document.documentElement.lang === 'en';
-      submitBtn.textContent = isEn ? '✓ Thank you! Subscribed' : '✓ Merci ! Inscription validée';
-      submitBtn.style.background = '#26EFDC';
-      submitBtn.style.color = '#16121F';
+      var emailVal = emailInput.value.trim();
 
-      // Allow form submission to capture the value before marking as readonly/disabled
+      // Enregistrer dans localStorage pour masquer définitivement le champ pour cet utilisateur
+      try {
+        localStorage.setItem('passages_newsletter_subscribed', 'true');
+        localStorage.setItem('passages_newsletter_email', emailVal);
+      } catch (e) {}
+
+      // Dual submission: envoyer aussi en fetch d'arrière-plan
+      try {
+        if (window.fetch && form.action) {
+          var formData = new FormData(form);
+          fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            mode: 'no-cors'
+          }).catch(function () {});
+        }
+      } catch (e) {}
+
+      // Masquer immédiatement le formulaire et afficher le bloc de succès
       setTimeout(function () {
-        submitBtn.disabled = true;
-        if (emailInput) emailInput.readOnly = true;
-      }, 50);
+        document.querySelectorAll('form[action*="sibforms.com"]').forEach(function (f) {
+          renderNewsletterSuccessUI(f, emailVal);
+        });
+      }, 120);
 
       return true;
     }

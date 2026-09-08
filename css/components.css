@@ -840,6 +840,27 @@
       color: var(--color-accent);
     }
 
+    .newsletter-success-box {
+      background: rgba(38, 239, 220, 0.08);
+      border: 1px solid rgba(38, 239, 220, 0.35);
+      border-radius: 14px;
+      padding: 16px 18px;
+      text-align: left;
+      animation: fadeInNewsletter 0.35s ease forwards;
+      width: 100%;
+    }
+
+    @keyframes fadeInNewsletter {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .footer-input {
       flex: 1;
       min-width: 0;
