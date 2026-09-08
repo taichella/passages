@@ -116,22 +116,35 @@
     initMobileMenu();
   }
 
-  // 3. Gestionnaire de la Newsletter (carte Soutenir et footer)
+  // 3. Gestionnaire de la Newsletter (carte Soutenir et footer avec mécanisme Brevo)
   window.handleNewsletter = function (formEl) {
-    var form = formEl && formEl.nodeType === 1 ? formEl : null;
-    var emailInput = form ? form.querySelector('input[type="email"]') : document.getElementById('newsletterEmail');
+    var form = formEl && formEl.nodeType === 1 ? formEl : (typeof event !== 'undefined' && event && event.target ? event.target : null);
+    var emailInput = form ? (form.querySelector('input[name="EMAIL"]') || form.querySelector('input[type="email"]')) : document.getElementById('newsletterEmail');
     var submitBtn = form ? form.querySelector('button[type="submit"]') : document.getElementById('newsletterBtn');
 
     if (!emailInput) emailInput = document.getElementById('newsletterEmail');
     if (!submitBtn) submitBtn = document.getElementById('newsletterBtn');
 
+    if (form && typeof form.checkValidity === 'function' && !form.checkValidity()) {
+      if (typeof form.reportValidity === 'function') form.reportValidity();
+      return false;
+    }
+
     if (emailInput && emailInput.value && (!emailInput.type || emailInput.type !== 'email' || emailInput.checkValidity())) {
-      submitBtn.textContent = 'Merci ! Inscription validée';
+      var isEn = document.documentElement.lang === 'en';
+      submitBtn.textContent = isEn ? '✓ Thank you! Subscribed' : '✓ Merci ! Inscription validée';
       submitBtn.style.background = '#26EFDC';
       submitBtn.style.color = '#16121F';
-      submitBtn.disabled = true;
-      emailInput.disabled = true;
+
+      // Allow form submission to capture the value before marking as readonly/disabled
+      setTimeout(function () {
+        submitBtn.disabled = true;
+        if (emailInput) emailInput.readOnly = true;
+      }, 50);
+
+      return true;
     }
+    return false;
   };
 
   // 4. Rétrocompatibilité avec les anciens liens d'ancrage / hash (#dispositif, #demande, #en)
@@ -145,8 +158,6 @@
         window.location.href = 'dispositif.html';
       } else if (hash === '#demande') {
         window.location.href = 'demande.html';
-      } else if (hash === '#en') {
-        window.location.href = 'en.html';
       }
     }
   })();
@@ -171,6 +182,8 @@
             } else if (key === 'email' && el.tagName === 'A') {
               el.textContent = data[key];
               el.href = 'mailto:' + data[key];
+            } else if (el.querySelector('span')) {
+              el.querySelector('span').textContent = data[key];
             } else {
               el.textContent = data[key];
             }
