@@ -116,10 +116,15 @@
     initMobileMenu();
   }
 
-  // 3. Gestionnaire de la Newsletter dans le footer
-  window.handleNewsletter = function () {
-    var emailInput = document.getElementById('newsletterEmail');
-    var submitBtn = document.getElementById('newsletterBtn');
+  // 3. Gestionnaire de la Newsletter (carte Soutenir et footer)
+  window.handleNewsletter = function (formEl) {
+    var form = formEl && formEl.nodeType === 1 ? formEl : null;
+    var emailInput = form ? form.querySelector('input[type="email"]') : document.getElementById('newsletterEmail');
+    var submitBtn = form ? form.querySelector('button[type="submit"]') : document.getElementById('newsletterBtn');
+
+    if (!emailInput) emailInput = document.getElementById('newsletterEmail');
+    if (!submitBtn) submitBtn = document.getElementById('newsletterBtn');
+
     if (emailInput && emailInput.value && (!emailInput.type || emailInput.type !== 'email' || emailInput.checkValidity())) {
       submitBtn.textContent = 'Merci ! Inscription validée';
       submitBtn.style.background = '#26EFDC';

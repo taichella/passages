@@ -151,28 +151,118 @@
       border-bottom: 1px solid var(--color-border-light);
     }
 
-    /* ── BOUTONS ── */
-    .btn-primary {
+    /* ── BOUTONS HARMONISÉS ET STANDARDISÉS ── */
+    /* 1. Botão Azul (Cyan / Accent) */
+    .btn-primary,
+    .btn-blue,
+    .footer-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
       background: var(--color-accent);
       color: var(--color-text-main) !important;
+      font-family: var(--font-cairo);
       font-weight: 700;
-      font-size: 17px;
-      padding: 15px 28px;
+      font-size: 16px;
+      padding: 13px 26px;
       border-radius: 999px;
       transition: var(--transition-smooth);
       border: none;
       cursor: pointer;
       text-align: center;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 4px 14px rgba(38, 239, 220, 0.2);
     }
 
-    .btn-primary:hover {
-      background: var(--color-white);
+    .btn-primary:hover,
+    .btn-blue:hover,
+    .footer-btn:hover {
+      background: #14BFAF;
+      color: var(--color-text-main) !important;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(38, 239, 220, 0.3);
+      box-shadow: 0 6px 20px rgba(38, 239, 220, 0.38);
+    }
+
+    .btn-primary:active,
+    .btn-blue:active,
+    .footer-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(38, 239, 220, 0.2);
+    }
+
+    /* 2. Botão Roxo (Purple / Primary) */
+    .btn-purple,
+    .nav-btn-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--color-purple);
+      color: var(--color-white) !important;
+      font-family: var(--font-cairo);
+      font-weight: 700;
+      font-size: 16px;
+      padding: 13px 26px;
+      border-radius: 999px;
+      transition: var(--transition-smooth);
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 4px 14px rgba(100, 2, 238, 0.2);
+    }
+
+    .btn-purple:hover,
+    .nav-btn-cta:hover {
+      background: var(--color-primary-dark);
+      color: var(--color-white) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(100, 2, 238, 0.3);
+    }
+
+    .btn-purple:active,
+    .nav-btn-cta:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(100, 2, 238, 0.2);
+    }
+
+    /* 3. Botão Stroke / Text Only */
+    .btn-outline,
+    .btn-stroke {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: transparent;
+      border: 1.5px solid var(--color-border-dark);
+      color: var(--color-purple) !important;
+      font-family: var(--font-cairo);
+      font-weight: 700;
+      font-size: 16px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      transition: var(--transition-smooth);
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-outline:hover,
+    .btn-stroke:hover {
+      border-color: var(--color-purple);
+      background: var(--color-bg-light);
+      color: var(--color-primary) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(100, 2, 238, 0.15);
+    }
+
+    .btn-outline:active,
+    .btn-stroke:active {
+      transform: translateY(0);
     }
 
     .btn-outline-light {
@@ -180,42 +270,31 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      border: 1px solid var(--color-border-dark);
+      background: transparent;
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
       color: var(--color-white) !important;
+      font-family: var(--font-cairo);
       font-weight: 700;
-      font-size: 17px;
-      padding: 15px 28px;
+      font-size: 16px;
+      padding: 12px 24px;
       border-radius: 999px;
       transition: var(--transition-smooth);
+      cursor: pointer;
       text-align: center;
+      text-decoration: none;
+      white-space: nowrap;
     }
 
     .btn-outline-light:hover {
       border-color: var(--color-accent);
       color: var(--color-accent) !important;
+      background: rgba(38, 239, 220, 0.08);
       transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(38, 239, 220, 0.25);
     }
 
-    .btn-purple {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: var(--color-purple);
-      color: var(--color-white) !important;
-      font-weight: 700;
-      padding: 13px 24px;
-      border-radius: 999px;
-      transition: var(--transition-smooth);
-      border: none;
-      cursor: pointer;
-      text-align: center;
-    }
-
-    .btn-purple:hover {
-      background: var(--color-primary);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(100, 2, 238, 0.2);
+    .btn-outline-light:active {
+      transform: translateY(0);
     }
 
     .link-action {
