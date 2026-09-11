@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aperçu & Générateur - Newsletter PassageS (Brevo)</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #4500A7;
+      --color-primary-dark: #37027F;
+      --color-accent: #26EFDC;
+      --color-accent-dark: #14BFAF;
+      --color-bg-light: #F6F2FF;
+      --color-text-main: #16121F;
+      --color-text-muted: #625A72;
+      --color-border: #E7DEFB;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+      background: var(--color-bg-light);
+      color: var(--color-text-main);
+      margin: 0;
+      padding: 30px 20px 60px;
+      line-height: 1.5;
+    }
+
+    .wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .header-card {
+      background: #FFFFFF;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(69, 0, 167, 0.08);
+      padding: 32px;
+      margin-bottom: 24px;
+      border: 1px solid var(--color-border);
+    }
+
+    .brand-bar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .badge-brevo {
+      background: #0B996F;
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .badge-status {
+      background: #E7DEFB;
+      color: #4500A7;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: var(--color-primary);
+      margin: 0 0 8px;
+      font-weight: 900;
+    }
+
+    p.subtitle {
+      color: var(--color-text-muted);
+      font-size: 16px;
+      margin: 0 0 24px;
+    }
+
+    /* Actions bar */
+    .actions-bar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--color-border);
+      padding-top: 20px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-primary);
+      color: #FFFFFF;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(69, 0, 167, 0.2);
+    }
+
+    .btn:hover {
+      background: var(--color-primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(69, 0, 167, 0.3);
+    }
+
+    .btn-secondary {
+      background: var(--color-accent);
+      color: #16121F;
+      box-shadow: 0 4px 12px rgba(38, 239, 220, 0.3);
+    }
+
+    .btn-secondary:hover {
+      background: var(--color-accent-dark);
+      box-shadow: 0 6px 18px rgba(38, 239, 220, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--color-border);
+      color: var(--color-primary);
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      background: #F9F6FE;
+      border-color: var(--color-primary);
+    }
+
+    /* Device toggle */
+    .view-toggles {
+      display: flex;
+      background: #F2ECFC;
+      border-radius: 999px;
+      padding: 4px;
+      gap: 4px;
+    }
+
+    .toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: none;
+      background: transparent;
+      color: var(--color-text-muted);
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .toggle-btn.active {
+      background: #FFFFFF;
+      color: var(--color-primary);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Preview Iframe Container */
+    .preview-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .preview-frame-container {
+      background: #FFFFFF;
+      border-radius: 24px;
+      border: 2px dashed var(--color-border);
+      padding: 16px;
+      box-shadow: 0 10px 30px rgba(69, 0, 167, 0.06);
+      width: 100%;
+      max-width: 660px;
+      transition: max-width 0.3s ease;
+    }
+
+    .preview-frame-container.mobile-mode {
+      max-width: 400px;
+      border-radius: 36px;
+      padding: 14px 10px;
+      border: 8px solid #16121F;
+    }
+
+    iframe#emailFrame {
+      width: 100%;
+      height: 1100px;
+      border: none;
+      border-radius: 16px;
+      background: #F6F2FF;
+      display: block;
+    }
+
+    /* Guide & Instructions */
+    .guide-card {
+      background: #FFFFFF;
+      border-radius: 20px;
+      padding: 32px;
+      border: 1px solid var(--color-border);
+    }
+
+    .guide-card h2 {
+      color: var(--color-primary);
+      font-size: 20px;
+      margin: 0 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .steps-list {
+      margin: 0;
+      padding-left: 24px;
+      color: var(--color-text-main);
+    }
+
+    .steps-list li {
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+
+    .steps-list code {
+      background: #F2ECFC;
+      color: var(--color-primary);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .tag-callout {
+      background: #F9F6FE;
+      border-left: 4px solid var(--color-accent-dark);
+      padding: 14px 18px;
+      border-radius: 0 12px 12px 0;
+      margin-top: 18px;
+      font-size: 14px;
+    }
+
+    /* Toast alert */
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: #16121F;
+      color: #FFFFFF;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      display: none;
+      align-items: center;
+      gap: 10px;
+      z-index: 1000;
+      border-left: 4px solid var(--color-accent);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <!-- En-tête -->
+    <div class="header-card">
+      <div class="brand-bar">
+        <span class="badge-brevo">Compatible Brevo</span>
+        <span class="badge-status">Newsletter n°1</span>
+      </div>
+      <h1>Template Newsletter — PassageS</h1>
+      <p class="subtitle">
+        Modèle d'e-mail responsive, élégant et conforme à l'identité visuelle de PassageS. Prêt pour Brevo (Sendinblue).
+      </p>
+
+      <!-- Actions & Switcher d'écran -->
+      <div class="actions-bar">
+        <div class="btn-group">
+          <button type="button" class="btn" onclick="copyHtmlToClipboard()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            Copier le code HTML pour Brevo
+          </button>
+          <a href="newsletter-template.html" download="newsletter-passages-n1.html" class="btn btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Télécharger le fichier .html
+          </a>
+        </div>
+
+        <!-- Toggles Desktop / Mobile -->
+        <div class="view-toggles">
+          <button type="button" class="toggle-btn active" id="btnDesktop" onclick="setMode('desktop')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="14" x="2" y="3" rx="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            Ordinateur (600px)
+          </button>
+          <button type="button" class="toggle-btn" id="btnMobile" onclick="setMode('mobile')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect>
+              <path d="M12 18h.01"></path>
+            </svg>
+            Mobile (375px)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Aperçu Iframe interactif -->
+    <div class="preview-wrapper">
+      <div class="preview-frame-container" id="frameContainer">
+        <iframe id="emailFrame" src="newsletter-template.html" title="Aperçu Newsletter PassageS"></iframe>
+      </div>
+    </div>
+
+    <!-- Instructions d'importation dans Brevo -->
+    <div class="guide-card">
+      <h2>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        Comment utiliser ce modèle dans Brevo ?
+      </h2>
+      <ol class="steps-list">
+        <li>Cliquez sur le bouton violet ci-dessus <strong>« Copier le code HTML pour Brevo »</strong>.</li>
+        <li>Rendez-vous dans votre compte <strong>Brevo</strong> &gt; menu <strong>Campagnes</strong> &gt; <strong>E-mail</strong> &gt; <strong>Créer une campagne</strong>.</li>
+        <li>Renseignez le nom de la campagne, l'expéditeur (ex: <em>PassageS &lt;passages26@mimesis-asso.fr&gt;</em>) et l'objet (ex: <em>Lancement du dispositif PassageS en Drôme-Ardèche</em>).</li>
+        <li>À l'étape <strong>Conception</strong>, choisissez l'onglet <strong>« Coder votre propre modèle »</strong> puis <strong>« Utiliser l'éditeur HTML »</strong> ou <strong>« Coller le code »</strong>.</li>
+        <li>Collez simplement le code HTML copié (Ctrl+V ou Cmd+V) et enregistrez.</li>
+        <li>Envoyez un e-mail de test (BAT) sur votre boîte personnelle pour admirer le rendu parfait sur votre messagerie avant l'envoi officiel !</li>
+      </ol>
+
+      <div class="tag-callout">
+        <strong>💡 Balises Brevo intégrées :</strong>
+        Le modèle intègre déjà la balise <code>{{ mirror }}</code> (lien pour afficher dans le navigateur) en haut et la balise obligatoire <code>{{ unsubscribe }}</code> (lien de désinscription) dans le pied de page, assurant une conformité totale avec les filtres anti-spam et les règles RGPD de Brevo.
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast de notification -->
+  <div class="toast" id="copyToast">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#26EFDC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    <span>Code HTML de la newsletter copié dans le presse-papiers !</span>
+  </div>
+
+  <script>
+    function resizeIframe() {
+      try {
+        const iframe = document.getElementById('emailFrame');
+        if (iframe && iframe.contentWindow && iframe.contentWindow.document.body) {
+          const newHeight = iframe.contentWindow.document.body.scrollHeight + 60;
+          iframe.style.height = Math.max(newHeight, 1300) + 'px';
+        }
+      } catch (e) {
+        // Fallback
+      }
+    }
+
+    window.addEventListener('load', () => {
+      const iframe = document.getElementById('emailFrame');
+      if (iframe) {
+        iframe.onload = resizeIframe;
+        setTimeout(resizeIframe, 500);
+      }
+    });
+
+    function setMode(mode) {
+      const container = document.getElementById('frameContainer');
+      const btnDesktop = document.getElementById('btnDesktop');
+      const btnMobile = document.getElementById('btnMobile');
+
+      if (mode === 'mobile') {
+        container.classList.add('mobile-mode');
+        btnMobile.classList.add('active');
+        btnDesktop.classList.remove('active');
+      } else {
+        container.classList.remove('mobile-mode');
+        btnDesktop.classList.add('active');
+        btnMobile.classList.remove('active');
+      }
+      setTimeout(resizeIframe, 350);
+    }
+
+    async function copyHtmlToClipboard() {
+      try {
+        const response = await fetch('newsletter-template.html');
+        const html = await response.text();
+        await navigator.clipboard.writeText(html);
+        showToast();
+      } catch (err) {
+        // Fallback si fetch local est restreint
+        const iframe = document.getElementById('emailFrame');
+        if (iframe && iframe.contentWindow && iframe.contentWindow.document) {
+          const content = iframe.contentWindow.document.documentElement.outerHTML;
+          navigator.clipboard.writeText(content);
+          showToast();
+        } else {
+          alert("Impossible de copier automatiquement. Vous pouvez télécharger le fichier .html et ouvrir son code.");
+        }
+      }
+    }
+
+    function showToast() {
+      const toast = document.getElementById('copyToast');
+      toast.style.display = 'inline-flex';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 3500);
+    }
+  </script>
+</body>
+
+</html>
