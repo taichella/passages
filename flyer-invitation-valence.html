@@ -219,7 +219,7 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       padding: 5px 14px;
-      border-radius: 999px;
+      border-radius: 8px;
       white-space: nowrap;
     }
 
@@ -252,6 +252,14 @@
 
     .hero-title span {
       color: var(--color-primary);
+      background: linear-gradient(180deg, transparent 33%, #26EFDC 33%);
+      padding: 0 8px 3px;
+      border-radius: 4px;
+      display: inline-block;
+      line-height: 1.15;
+      text-decoration: none !important;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
     }
 
     .hero-lead {
@@ -315,7 +323,7 @@
       background: var(--color-valence);
       color: var(--color-white);
       padding: 4px 10px;
-      border-radius: 999px;
+      border-radius: 8px;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       white-space: nowrap;
@@ -522,8 +530,8 @@
       color: var(--color-primary-dark);
       font-weight: 900;
       font-size: 14px;
-      padding: 11px 18px;
-      border-radius: 10px;
+      padding: 12px 24px;
+      border-radius: 999px;
       border: none;
       cursor: pointer;
       text-decoration: none;
@@ -777,10 +785,10 @@
       background: var(--color-primary);
       color: var(--color-white);
       border: none;
-      padding: 11px;
-      border-radius: var(--radius-sm);
+      padding: 12px 22px;
+      border-radius: 999px;
       cursor: pointer;
-      margin-top: 6px;
+      margin-top: 8px;
       transition: var(--transition-smooth);
     }
 
@@ -806,15 +814,26 @@
     @media print {
       @page {
         size: A4 portrait;
-        margin: 8mm 10mm;
+        margin: 5mm 6mm;
       }
 
-      body {
-        background: #FFFFFF !important;
-        padding: 0 !important;
-        color: #16121F !important;
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
+      }
+
+      html,
+      body {
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #FFFFFF !important;
+        color: #16121F !important;
+        overflow: hidden !important;
       }
 
       .screen-action-bar,
@@ -824,127 +843,122 @@
 
       .flyer-sheet {
         box-shadow: none !important;
-        border: none !important;
-        padding: 10px 14px 6px !important;
+        border: 1px solid var(--color-border-subtle) !important;
+        border-radius: var(--radius-lg) !important;
+        width: 100% !important;
         max-width: 100% !important;
-        border-radius: 0 !important;
+        margin: 0 auto !important;
+        padding: 24px 30px 20px !important;
         page-break-inside: avoid !important;
         break-inside: avoid !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+        zoom: 0.85;
       }
 
       .flyer-sheet::before {
         height: 5px !important;
       }
 
-      .flyer-header {
-        padding-bottom: 12px !important;
-        margin-bottom: 14px !important;
-      }
-
-      .hero-title {
-        font-size: 25px !important;
-        margin-bottom: 4px !important;
-      }
-
-      .hero-lead {
-        font-size: 14px !important;
-      }
-
+      /* STRUCTURE DESKTOP STRICTEMENT MAINTENUE EN IMPRESSION (MULTI-COLONNES) */
       .partnership-strip {
-        padding: 10px 14px !important;
-        margin-bottom: 16px !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 13px 20px !important;
+        margin-bottom: 22px !important;
+      }
+
+      .partnership-info {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 14px !important;
+      }
+
+      .partnership-chip {
+        border-radius: 999px !important;
+        padding: 6px 14px !important;
       }
 
       .event-essentials {
-        gap: 10px !important;
-        margin-bottom: 16px !important;
+        display: grid !important;
+        grid-template-columns: 1fr 1.35fr 1fr !important;
+        gap: 14px !important;
+        margin-bottom: 22px !important;
       }
 
       .essential-box {
-        padding: 10px 12px !important;
-      }
-
-      .box-main {
-        font-size: 15px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 16px 18px !important;
       }
 
       .flyer-core {
-        gap: 12px !important;
-        margin-bottom: 16px !important;
+        display: grid !important;
+        grid-template-columns: 1.25fr 0.95fr !important;
+        gap: 18px !important;
+        margin-bottom: 22px !important;
       }
 
       .core-program {
-        padding: 14px 16px !important;
-      }
-
-      .agenda-row {
-        font-size: 12.5px !important;
+        padding: 20px 22px !important;
+        order: unset !important;
       }
 
       .core-registration {
-        padding: 14px 16px !important;
-      }
-
-      .reg-top-title {
-        font-size: 15px !important;
+        padding: 22px !important;
+        order: unset !important;
       }
 
       .btn-register-main {
-        padding: 8px 14px !important;
-        font-size: 12.5px !important;
+        border-radius: 999px !important;
+        padding: 12px 24px !important;
       }
 
-      .reg-qr-section {
-        margin-top: 10px !important;
-        padding-top: 10px !important;
-      }
-
-      .qr-holder img {
-        width: 50px !important;
-        height: 50px !important;
+      .hero-title span {
+        color: var(--color-primary) !important;
+        background: linear-gradient(180deg, transparent 33%, #26EFDC 33%) !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        padding: 0 8px 3px !important;
+        border-radius: 4px !important;
+        display: inline-block !important;
+        line-height: 1.15 !important;
+        text-decoration: none !important;
       }
 
       .flyer-footer {
-        padding-top: 10px !important;
+        padding-top: 16px !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
       }
 
       .logos-row {
-        padding: 10px 18px !important;
-        margin-bottom: 8px !important;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
         justify-content: space-around !important;
-        gap: 20px !important;
+        gap: 32px !important;
+        padding: 20px 32px !important;
+        margin-bottom: 14px !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
       }
 
-      .footer-label {
-        font-size: 11px !important;
-        margin-bottom: 6px !important;
-      }
-
-      .partner-img {
-        height: 42px !important;
-      }
-
-      .partner-item.valence-item .partner-img {
-        height: 52px !important;
-      }
-
-      .partner-item.babel-item .partner-img {
-        height: 46px !important;
-      }
-
-      .partner-item.ars-item .partner-img {
-        height: 38px !important;
-      }
-
-      .partner-item.mimesis-item .partner-img {
-        height: 42px !important;
+      .footer-contacts {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
       }
     }
 
     /* ═════════════════════════════════════════════════════════════
-       RESPONSIVE MOBILE
+       RESPONSIVE MOBILE (ACTIF UNIQUEMENT SUR ÉCRAN, JAMAIS EN IMPRESSION)
        ═════════════════════════════════════════════════════════════ */
-    @media (max-width: 720px) {
+    @media screen and (max-width: 720px) {
       body {
         padding: 12px 8px 30px;
       }
@@ -1121,8 +1135,8 @@
         </div>
         <div class="box-main" style="font-size: 15.5px;">Places limitées</div>
         <div class="box-sub">
-          <strong>Capacité de 35 personnes</strong><br>
-          Inscription gratuite pour les publics et les structures.
+          <strong>2 personenes maximum par structure</strong><br>
+          Inscription gratuite.
         </div>
       </div>
     </section>
@@ -1193,8 +1207,8 @@
             <img src="images/qr-inscription-valence.svg" alt="QR Code d'inscription" class="qr-image">
           </div>
           <div class="qr-caption">
-            <strong>Inscription mobile</strong>
-            Scannez ce QR Code avec votre smartphone pour accéder directement au formulaire.
+            <strong>Scannez ce QR Code</strong>
+            avec votre smartphone pour accéder directement au formulaire.
           </div>
         </div>
       </div>
