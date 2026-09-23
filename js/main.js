@@ -345,10 +345,80 @@
     }
   }
 
+  // 6. Gestionnaire du Popup Modal Événementiel (Cycle de Webinaires - 3s)
+  function initWebinarPopup() {
+    var popup = document.getElementById('webinarPopup');
+    if (!popup) return;
+
+    var closeBtn = document.getElementById('closeWebinarPopupBtn');
+    var learnMoreBtn = document.getElementById('popupLearnMoreBtn');
+
+    function closePopup() {
+      if (typeof popup.close === 'function' && popup.open) {
+        popup.close();
+      }
+      try {
+        sessionStorage.setItem('passages_webinar_popup_dismissed', 'true');
+      } catch (e) {}
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closePopup);
+    }
+
+    if (learnMoreBtn) {
+      learnMoreBtn.addEventListener('click', function () {
+        closePopup();
+        var actualitesSection = document.getElementById('agenda') || document.getElementById('actualites');
+        if (actualitesSection) {
+          actualitesSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+
+    // Fermeture lors d'un clic sur l'arrière-plan (backdrop) pour les navigateurs sans closedby natif
+    if (!('closedBy' in HTMLDialogElement.prototype)) {
+      popup.addEventListener('click', function (event) {
+        if (event.target !== popup) return;
+        var rect = popup.getBoundingClientRect();
+        var isDialogContent = (
+          rect.top <= event.clientY &&
+          event.clientY <= rect.top + rect.height &&
+          rect.left <= event.clientX &&
+          event.clientX <= rect.left + rect.width
+        );
+        if (!isDialogContent) {
+          closePopup();
+        }
+      });
+    }
+
+    // Écouter l'événement 'close' natif pour marquer comme fermé dans sessionStorage
+    popup.addEventListener('close', function () {
+      try {
+        sessionStorage.setItem('passages_webinar_popup_dismissed', 'true');
+      } catch (e) {}
+    });
+
+    // Déclencher après 3 secondes si non fermé dans la session actuelle
+    var isDismissed = false;
+    try {
+      isDismissed = sessionStorage.getItem('passages_webinar_popup_dismissed') === 'true';
+    } catch (e) {}
+
+    if (!isDismissed) {
+      setTimeout(function () {
+        if (popup && typeof popup.showModal === 'function' && !popup.open) {
+          popup.showModal();
+        }
+      }, 3000);
+    }
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', hydrateCmsContent);
+    document.addEventListener('DOMContentLoaded', initWebinarPopup);
   } else {
-    hydrateCmsContent();
+    initWebinarPopup();
   }
 
 })();
