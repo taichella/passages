@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitation · Présentation PassageS à Valence (2 novembre)</title>
+  <meta name="description"
+    content="Invitation à la présentation du dispositif PassageS auprès des professionnel·le·s de la santé et du social. Le 2 novembre de 16h30 à 18h au Pôle Santé de Valence. Places limitées à 35 personnes.">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <!-- Typographie Google Fonts : Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ═════════════════════════════════════════════════════════════
+       CHARTE GRAPHIQUE & DESIGN TOKENS
+       ═════════════════════════════════════════════════════════════ */
+    :root {
+      --color-primary: #380082;
+      --color-primary-dark: #2A0063;
+      --color-primary-light: #5A0EC9;
+      --color-accent: #26EFDC;
+      --color-accent-dark: #12BFAF;
+      --color-valence: #7C2582;
+      --color-valence-bg: #FAF5FC;
+      --color-valence-border: #E8D5EC;
+      --color-bg-page: #F3EEFA;
+      --color-bg-card: #FAF8FD;
+      --color-border-subtle: #E9E1F5;
+      --color-text-title: #130E1F;
+      --color-text-body: #4A4356;
+      --color-text-subtle: #797187;
+      --color-white: #FFFFFF;
+      --font-main: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --shadow-sheet: 0 16px 48px rgba(56, 0, 130, 0.09), 0 2px 10px rgba(19, 14, 31, 0.04);
+      --transition-smooth: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: var(--color-bg-page);
+      color: var(--color-text-body);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding: 24px 16px 60px;
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       BARRE D'ACTION ÉCRAN (MASQUÉE À L'IMPRESSION)
+       ═════════════════════════════════════════════════════════════ */
+    .screen-action-bar {
+      max-width: 820px;
+      margin: 0 auto 20px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius-md);
+      padding: 10px 18px;
+      border: 1px solid rgba(233, 225, 245, 0.9);
+      box-shadow: 0 4px 18px rgba(56, 0, 130, 0.06);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .screen-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11.5px;
+      font-weight: 800;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .screen-badge::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: var(--color-accent-dark);
+      border-radius: 50%;
+    }
+
+    .screen-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-screen {
+      font-family: var(--font-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 7px 15px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-screen-primary {
+      background: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    .btn-screen-primary:hover {
+      background: var(--color-primary-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-screen-ghost {
+      background: #F4EFFF;
+      color: var(--color-primary);
+      border-color: var(--color-border-subtle);
+    }
+
+    .btn-screen-ghost:hover {
+      background: #EDE4FC;
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       FEUILLE DU FLYER (CALIBRÉE POUR A4 & VUE ÉCRAN)
+       ═════════════════════════════════════════════════════════════ */
+    .flyer-sheet {
+      max-width: 820px;
+      margin: 0 auto;
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sheet);
+      border: 1px solid var(--color-border-subtle);
+      position: relative;
+      overflow: hidden;
+      padding: 34px 40px 28px;
+    }
+
+    /* Fin liseré bicolore supérieur */
+    .flyer-sheet::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #380082 0%, #5A0EC9 55%, #26EFDC 85%, #7C2582 100%);
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       EN-TÊTE ÉPURÉ
+       ═════════════════════════════════════════════════════════════ */
+    .flyer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding-bottom: 18px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+
+    .brand-cluster {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo-passages {
+      height: 44px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .brand-meta {
+      border-left: 1.5px solid var(--color-border-subtle);
+      padding-left: 14px;
+    }
+
+    .brand-meta-tag {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      line-height: 1.2;
+    }
+
+    .brand-meta-territory {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-text-subtle);
+    }
+
+    .tag-invitation {
+      background: #F4EFFF;
+      color: var(--color-primary);
+      border: 1px solid var(--color-border-subtle);
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 5px 14px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       TITRE & ACCROCHE
+       ═════════════════════════════════════════════════════════════ */
+    .flyer-hero {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .hero-label {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .hero-title {
+      font-size: 29px;
+      font-weight: 900;
+      color: var(--color-text-title);
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      margin-bottom: 8px;
+    }
+
+    .hero-title span {
+      color: var(--color-primary);
+    }
+
+    .hero-lead {
+      font-size: 15px;
+      color: var(--color-text-body);
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       CARTOUCHE PARTENARIAT VILLE DE VALENCE (OBLIGATOIRE)
+       ═════════════════════════════════════════════════════════════ */
+    .partnership-strip {
+      background: var(--color-valence-bg);
+      border: 1px solid var(--color-valence-border);
+      border-radius: var(--radius-md);
+      padding: 13px 20px;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .partnership-info {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-valence-strip {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      object-fit: contain;
+    }
+
+    .partnership-text-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .partnership-main-mention {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--color-valence);
+      line-height: 1.3;
+    }
+
+    .partnership-sub-mention {
+      font-size: 12px;
+      color: #6A4F72;
+      font-weight: 500;
+    }
+
+    .partnership-chip {
+      font-size: 11px;
+      font-weight: 800;
+      background: var(--color-valence);
+      color: var(--color-white);
+      padding: 4px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       3 REPERES PRATIQUES ESSENTIELS
+       ═════════════════════════════════════════════════════════════ */
+    .event-essentials {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr 1fr;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .essential-box {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .essential-box.highlight {
+      background: #F8F3FF;
+      border-color: #DCCCF6;
+    }
+
+    .box-caption {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .box-main {
+      font-size: 17px;
+      font-weight: 900;
+      color: var(--color-text-title);
+      line-height: 1.25;
+      margin-bottom: 2px;
+    }
+
+    .box-sub {
+      font-size: 13px;
+      color: var(--color-text-subtle);
+      line-height: 1.35;
+      font-weight: 500;
+    }
+
+    .link-map {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      margin-top: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .link-map:hover {
+      color: var(--color-primary-light);
+    }
+
+    .pill-seats {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      color: #A03808;
+      background: #FEECE3;
+      padding: 3px 8px;
+      border-radius: 6px;
+      margin-top: 5px;
+      width: fit-content;
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       CONTENU FLUIDE : PROGRAMME + INSCRIPTION
+       ═════════════════════════════════════════════════════════════ */
+    .flyer-core {
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    /* Volet Programme synthétique */
+    .core-program {
+      background: var(--color-white);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .core-heading {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-primary);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .agenda-simple {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .agenda-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13.5px;
+      line-height: 1.4;
+    }
+
+    .agenda-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #F3EEFA;
+      color: var(--color-primary);
+      font-size: 11.5px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .agenda-text {
+      color: var(--color-text-body);
+    }
+
+    .agenda-text strong {
+      color: var(--color-text-title);
+      font-weight: 700;
+    }
+
+    .target-professionals {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--color-border-subtle);
+      font-size: 12px;
+      color: var(--color-text-subtle);
+      line-height: 1.45;
+    }
+
+    .target-professionals strong {
+      color: var(--color-text-title);
+    }
+
+    /* Volet Inscription épuré & QR Code */
+    .core-registration {
+      background: linear-gradient(150deg, #2E006A 0%, #3F008F 100%);
+      color: var(--color-white);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .reg-top-title {
+      font-size: 17px;
+      font-weight: 900;
+      color: var(--color-white);
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+
+    .reg-top-desc {
+      font-size: 12.5px;
+      color: #E0D3FA;
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+
+    .btn-register-main {
+      font-family: var(--font-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--color-accent);
+      color: var(--color-primary-dark);
+      font-weight: 900;
+      font-size: 14px;
+      padding: 11px 18px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+      box-shadow: 0 4px 14px rgba(38, 239, 220, 0.28);
+    }
+
+    .btn-register-main:hover {
+      background: #50FFE9;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(38, 239, 220, 0.4);
+    }
+
+    .reg-qr-section {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .qr-holder {
+      background: var(--color-white);
+      padding: 4px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .qr-holder img {
+      width: 58px;
+      height: 58px;
+      display: block;
+    }
+
+    .qr-caption {
+      font-size: 11.5px;
+      color: #DDD0F7;
+      line-height: 1.35;
+    }
+
+    .qr-caption strong {
+      color: var(--color-accent);
+      font-weight: 800;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       PIED DE PAGE : UNIQUEMENT LES LOGOS DES PARTENAIRES (SANS TEXTE)
+       ═════════════════════════════════════════════════════════════ */
+    .flyer-footer {
+      border-top: 1px solid var(--color-border-subtle);
+      padding-top: 16px;
+    }
+
+    .footer-label {
+      text-align: center;
+      font-size: 11.5px;
+      font-weight: 800;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+
+    .logos-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 32px;
+      background: #FAF8FE;
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-md);
+      padding: 20px 32px;
+      margin-bottom: 14px;
+    }
+
+    .partner-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      opacity: 0.95;
+    }
+
+    .partner-item:hover {
+      transform: translateY(-2px);
+      opacity: 1;
+    }
+
+    .partner-img {
+      height: 48px;
+      width: auto;
+      max-width: 155px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .partner-item.valence-item .partner-img {
+      height: 60px;
+    }
+
+    .partner-item.ars-item .partner-img {
+      height: 42px;
+    }
+
+    .partner-item.babel-item .partner-img {
+      height: 52px;
+    }
+
+    .partner-item.mimesis-item .partner-img {
+      height: 48px;
+    }
+
+    .footer-contacts {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--color-text-subtle);
+      padding: 0 4px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .contact-link {
+      color: var(--color-text-subtle);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .contact-link:hover {
+      color: var(--color-primary);
+    }
+
+    .contact-link svg {
+      color: var(--color-primary);
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       MODALE FORMULAIRE D'INSCRIPTION INTERACTIVE
+       ═════════════════════════════════════════════════════════════ */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(19, 14, 31, 0.65);
+      backdrop-filter: blur(4px);
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-backdrop.is-open {
+      display: flex;
+    }
+
+    .modal-window {
+      background: var(--color-white);
+      max-width: 480px;
+      width: 100%;
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--color-border-subtle);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: #F4EFFF;
+      color: var(--color-primary);
+      cursor: pointer;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-close-btn:hover {
+      background: #EDE2FA;
+    }
+
+    .modal-h {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--color-primary);
+      margin-bottom: 4px;
+    }
+
+    .modal-sub {
+      font-size: 13px;
+      color: var(--color-text-subtle);
+      margin-bottom: 18px;
+    }
+
+    .form-field {
+      margin-bottom: 12px;
+    }
+
+    .form-field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--color-text-title);
+      margin-bottom: 4px;
+    }
+
+    .form-field input,
+    .form-field select {
+      width: 100%;
+      font-family: var(--font-main);
+      font-size: 13.5px;
+      padding: 9px 12px;
+      border: 1.5px solid var(--color-border-subtle);
+      border-radius: var(--radius-sm);
+      background: #FAF8FE;
+      color: var(--color-text-title);
+      outline: none;
+      transition: var(--transition-smooth);
+    }
+
+    .form-field input:focus,
+    .form-field select:focus {
+      border-color: var(--color-primary);
+      background: var(--color-white);
+    }
+
+    .form-2cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .btn-submit-reg {
+      width: 100%;
+      font-family: var(--font-main);
+      font-size: 14px;
+      font-weight: 800;
+      background: var(--color-primary);
+      color: var(--color-white);
+      border: none;
+      padding: 11px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      margin-top: 6px;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-submit-reg:hover {
+      background: var(--color-primary-light);
+    }
+
+    .reg-success {
+      display: none;
+      background: #EAFBF7;
+      border: 1px solid #14BFAF;
+      color: #0E8579;
+      padding: 18px;
+      border-radius: var(--radius-md);
+      text-align: center;
+      font-size: 13.5px;
+      line-height: 1.45;
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       FEUILLE DE STYLE PRINT (IMPRESSION & EXPORT A4 HAUTE DÉFINITION)
+       ═════════════════════════════════════════════════════════════ */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 8mm 10mm;
+      }
+
+      body {
+        background: #FFFFFF !important;
+        padding: 0 !important;
+        color: #16121F !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .screen-action-bar,
+      .modal-backdrop {
+        display: none !important;
+      }
+
+      .flyer-sheet {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 10px 14px 6px !important;
+        max-width: 100% !important;
+        border-radius: 0 !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      .flyer-sheet::before {
+        height: 5px !important;
+      }
+
+      .flyer-header {
+        padding-bottom: 12px !important;
+        margin-bottom: 14px !important;
+      }
+
+      .hero-title {
+        font-size: 25px !important;
+        margin-bottom: 4px !important;
+      }
+
+      .hero-lead {
+        font-size: 14px !important;
+      }
+
+      .partnership-strip {
+        padding: 10px 14px !important;
+        margin-bottom: 16px !important;
+      }
+
+      .event-essentials {
+        gap: 10px !important;
+        margin-bottom: 16px !important;
+      }
+
+      .essential-box {
+        padding: 10px 12px !important;
+      }
+
+      .box-main {
+        font-size: 15px !important;
+      }
+
+      .flyer-core {
+        gap: 12px !important;
+        margin-bottom: 16px !important;
+      }
+
+      .core-program {
+        padding: 14px 16px !important;
+      }
+
+      .agenda-row {
+        font-size: 12.5px !important;
+      }
+
+      .core-registration {
+        padding: 14px 16px !important;
+      }
+
+      .reg-top-title {
+        font-size: 15px !important;
+      }
+
+      .btn-register-main {
+        padding: 8px 14px !important;
+        font-size: 12.5px !important;
+      }
+
+      .reg-qr-section {
+        margin-top: 10px !important;
+        padding-top: 10px !important;
+      }
+
+      .qr-holder img {
+        width: 50px !important;
+        height: 50px !important;
+      }
+
+      .flyer-footer {
+        padding-top: 10px !important;
+      }
+
+      .logos-row {
+        padding: 10px 18px !important;
+        margin-bottom: 8px !important;
+        justify-content: space-around !important;
+        gap: 20px !important;
+      }
+
+      .footer-label {
+        font-size: 11px !important;
+        margin-bottom: 6px !important;
+      }
+
+      .partner-img {
+        height: 42px !important;
+      }
+
+      .partner-item.valence-item .partner-img {
+        height: 52px !important;
+      }
+
+      .partner-item.babel-item .partner-img {
+        height: 46px !important;
+      }
+
+      .partner-item.ars-item .partner-img {
+        height: 38px !important;
+      }
+
+      .partner-item.mimesis-item .partner-img {
+        height: 42px !important;
+      }
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       RESPONSIVE MOBILE
+       ═════════════════════════════════════════════════════════════ */
+    @media (max-width: 720px) {
+      body {
+        padding: 12px 8px 30px;
+      }
+
+      .flyer-sheet {
+        padding: 24px 18px 20px;
+      }
+
+      .hero-title {
+        font-size: 23px;
+      }
+
+      .event-essentials {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .flyer-core {
+        grid-template-columns: 1fr;
+      }
+
+      .partnership-strip {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .logos-row {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 18px;
+        padding: 12px 16px;
+      }
+
+      .footer-contacts {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- BARRE D'ACTIONS ÉCRAN (MASQUÉE À L'IMPRESSION) -->
+  <div class="screen-action-bar">
+    <span class="screen-badge">Flyer d'invitation</span>
+    <div class="screen-actions">
+      <button onclick="window.print()" class="btn-screen btn-screen-primary" title="Imprimer ou enregistrer en PDF">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+          <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        <span>Imprimer / PDF A4</span>
+      </button>
+      <button onclick="openModal()" class="btn-screen btn-screen-ghost" title="Ouvrir le formulaire d'inscription">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <line x1="19" y1="8" x2="19" y2="14"></line>
+          <line x1="22" y1="11" x2="16" y2="11"></line>
+        </svg>
+        <span>Inscription en ligne</span>
+      </button>
+      <a href="index.html" class="btn-screen btn-screen-ghost" title="Retour au site PassageS">
+        <span>Site web</span>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- FEUILLE DU FLYER (IMPRIMABLE A4) -->
+  <main class="flyer-sheet">
+
+    <!-- EN-TÊTE ÉPURÉ -->
+    <header class="flyer-header">
+      <div class="brand-cluster">
+        <img src="images/logo-passages-color-main.svg" alt="PassageS" class="logo-passages">
+        <div class="brand-meta">
+          <div class="brand-meta-tag">Médiation Transculturelle</div>
+          <div class="brand-meta-territory">Le soin d'un monde à l'autre</div>
+        </div>
+      </div>
+      <div class="tag-invitation">Invitation Professionnelle</div>
+    </header>
+
+    <!-- TITRE & VOCATION -->
+    <section class="flyer-hero">
+      <span class="hero-label">Rencontre territoriale à Valence</span>
+      <h1 class="hero-title">Présentation du dispositif <span>PassageS</span></h1>
+      <p class="hero-lead">
+        Une équipe mobile de médiation transculturelle au service des professionnel·le·s de la santé, du soin et du
+        travail social.
+      </p>
+    </section>
+
+    <!-- CARTOUCHE PARTENARIAT VILLE DE VALENCE (OBLIGATOIRE) -->
+    <section class="partnership-strip">
+      <div class="partnership-info">
+        <img src="images/logo-ville-valence.svg" alt="Ville de Valence" class="logo-valence-strip">
+        <div class="partnership-text-col">
+          <span class="partnership-main-mention">En partenariat avec la Direction Santé Publique de la ville de Valence</span>
+          <span class="partnership-sub-mention">Promouvoir la santé, l'accès aux droits et l'alliance thérapeutique auprès des publics allophones.</span>
+        </div>
+      </div>
+      <span class="partnership-chip">Partenaire santé</span>
+    </section>
+
+    <!-- REPERES PRATIQUES ESSENTIELS -->
+    <section class="event-essentials">
+      <!-- DATE & HEURE -->
+      <div class="essential-box highlight">
+        <div class="box-caption">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span>Date & Heure</span>
+        </div>
+        <div class="box-main">2 novembre</div>
+        <div class="box-sub">
+          <strong>16h30 à 18h00</strong><br>
+          <span style="font-size: 11.5px; color: var(--color-primary); font-weight: 700;">Accueil dès 16h15</span>
+        </div>
+      </div>
+
+      <!-- LIEU & ADRESSE -->
+      <div class="essential-box">
+        <div class="box-caption">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Lieu de rencontre</span>
+        </div>
+        <div class="box-main" style="font-size: 15.5px;">Pôle Santé de Valence</div>
+        <div class="box-sub">
+          <strong>Espace prévention</strong><br>
+          4 rue du Clos Gaillard, 26000 VALENCE
+        </div>
+        <a href="https://www.google.com/maps/search/4+rue+du+Clos+Gaillard,+26000+VALENCE?entry=gmail&source=g"
+          target="_blank" rel="noopener" class="link-map">
+          <span>Ouvrir l'itinéraire</span>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <!-- JAUGE & PARTICIPATION -->
+      <div class="essential-box">
+        <div class="box-caption">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          <span>Participation</span>
+        </div>
+        <div class="box-main" style="font-size: 15.5px;">Places limitées</div>
+        <div class="box-sub">
+          <strong>Capacité de 35 personnes</strong><br>
+          Inscription gratuite pour les publics et les structures.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION CENTRALE FLUIDE : PROGRAMME + INSCRIPTION -->
+    <section class="flyer-core">
+
+      <!-- PROGRAMME SYNTHÉTIQUE -->
+      <div class="core-program">
+        <div>
+          <div class="core-heading">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>Au programme de la présentation</span>
+          </div>
+
+          <div class="agenda-simple">
+            <div class="agenda-row">
+              <span class="agenda-num">1</span>
+              <div class="agenda-text">
+                <strong>Le dispositif PassageS :</strong> genèse du projet, équipe mobile pluridisciplinaire et modèle issu du <em>Centre Babel</em>.
+              </div>
+            </div>
+            <div class="agenda-row">
+              <span class="agenda-num">2</span>
+              <div class="agenda-text">
+                <strong>Les situations d'achoppement :</strong> barrière linguistique, représentations de la santé, traumatismes de l'exil et alliance thérapeutique.
+              </div>
+            </div>
+            <div class="agenda-row">
+              <span class="agenda-num">3</span>
+              <div class="agenda-text">
+                <strong>Modalités pratiques de saisine :</strong> comment mobiliser gratuitement l'équipe mobile, temps d'échanges et questions-réponses.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="target-professionals">
+          <strong>Public invité :</strong> médecins, soignant·e·s, travailleurs sociaux, éducateur·rice·s, psychologues, acteurs hospitaliers et associatifs.
+        </div>
+      </div>
+
+      <!-- INSCRIPTION & QR CODE -->
+      <div class="core-registration" id="inscription">
+        <div>
+          <h2 class="reg-top-title">Réserver votre place</h2>
+          <p class="reg-top-desc">
+            Afin de garantir des échanges de qualité et de respecter la jauge (35 personnes), merci de confirmer votre présence.
+          </p>
+
+          <button onclick="openModal()" class="btn-register-main">
+            <span>S'inscrire à la présentation</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+
+        <!-- ZONE QR CODE POUR FORMAT IMPRIMÉ -->
+        <div class="reg-qr-section">
+          <div class="qr-holder">
+            <img src="images/qr-inscription-valence.svg" alt="QR Code d'inscription" class="qr-image">
+          </div>
+          <div class="qr-caption">
+            <strong>Inscription mobile</strong>
+            Scannez ce QR Code avec votre smartphone pour accéder directement au formulaire.
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- PIED DE PAGE : LOGOS DES PARTENAIRES -->
+    <footer class="flyer-footer">
+      <div class="footer-label">Partenaires du projet</div>
+      <div class="logos-row">
+        <!-- 1. PassageS -->
+        <a href="index.html" class="partner-item" title="Dispositif PassageS" aria-label="PassageS">
+          <img src="images/logo-passages-color-main.svg" alt="PassageS" class="partner-img">
+        </a>
+
+        <!-- 2. Ville de Valence -->
+        <a href="https://www.google.com/maps/search/4+rue+du+Clos+Gaillard,+26000+VALENCE?entry=gmail&source=g"
+          target="_blank" rel="noopener" class="partner-item valence-item"
+          title="Ville de Valence - Direction Santé Publique" aria-label="Ville de Valence">
+          <img src="images/logo-ville-valence.svg" alt="Ville de Valence" class="partner-img">
+        </a>
+
+        <!-- 3. Centre Babel -->
+        <a href="https://centre-babel.fr/" target="_blank" rel="noopener" class="partner-item babel-item"
+          title="Centre Babel" aria-label="Centre Babel">
+          <img src="images/logo-centre-babel-color-black.svg" alt="Centre Babel" class="partner-img">
+        </a>
+
+        <!-- 4. ARS Auvergne-Rhône-Alpes -->
+        <a href="https://www.auvergne-rhone-alpes.ars.sante.fr/" target="_blank" rel="noopener"
+          class="partner-item ars-item" title="ARS Auvergne-Rhône-Alpes" aria-label="ARS Auvergne-Rhône-Alpes">
+          <img src="images/logo-ars.svg" alt="ARS Auvergne-Rhône-Alpes" class="partner-img">
+        </a>
+
+        <!-- 5. Association Mimesis -->
+        <a href="https://mimesis-asso.fr/projet-passages/" target="_blank" rel="noopener"
+          class="partner-item mimesis-item" title="Association Mimesis" aria-label="Association Mimesis">
+          <img src="images/logo-mimesis-color-black.svg" alt="Association Mimesis" class="partner-img">
+        </a>
+      </div>
+
+      <!-- CONTACTS & MENTIONS -->
+      <div class="footer-contacts">
+        <a href="mailto:passages26@mimesis-asso.fr" class="contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+          </svg>
+          <span>passages26@mimesis-asso.fr</span>
+        </a>
+        <a href="tel:+33686413059" class="contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+            </path>
+          </svg>
+          <span>06 86 41 30 59</span>
+        </a>
+        <div class="contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span>passages.mimesis-asso.fr</span>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- MODALE FORMULAIRE D'INSCRIPTION INTERACTIVE -->
+  <div class="modal-backdrop" id="regModal" onclick="onBackdropClick(event)">
+    <div class="modal-window" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+      <button class="modal-close-btn" onclick="closeModal()" aria-label="Fermer la fenêtre">✕</button>
+
+      <h3 class="modal-h" id="mTitle">Inscription à la présentation</h3>
+      <p class="modal-sub">
+        Présentation PassageS · <strong>2 novembre (16h30 – 18h)</strong> au Pôle Santé de Valence (35 places max).
+      </p>
+
+      <div id="mFormBox">
+        <form onsubmit="onFormSubmit(event)">
+          <div class="form-2cols">
+            <div class="form-field">
+              <label for="fNom">Nom *</label>
+              <input type="text" id="fNom" required placeholder="Votre nom">
+            </div>
+            <div class="form-field">
+              <label for="fPrenom">Prénom *</label>
+              <input type="text" id="fPrenom" required placeholder="Votre prénom">
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="fStructure">Structure / Établissement *</label>
+            <input type="text" id="fStructure" required placeholder="Ex : CH Valence, CCAS, PMI, CHRS, Libéral...">
+          </div>
+
+          <div class="form-2cols">
+            <div class="form-field">
+              <label for="fFonction">Fonction *</label>
+              <input type="text" id="fFonction" required placeholder="Médecin, ASS, Éducateur...">
+            </div>
+            <div class="form-field">
+              <label for="fSeats">Places souhaitées *</label>
+              <select id="fSeats">
+                <option value="1">1 place</option>
+                <option value="2">2 places</option>
+                <option value="3">3 places</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-2cols">
+            <div class="form-field">
+              <label for="fEmail">E-mail professionnel *</label>
+              <input type="email" id="fEmail" required placeholder="nom@structure.fr">
+            </div>
+            <div class="form-field">
+              <label for="fTel">Téléphone</label>
+              <input type="tel" id="fTel" placeholder="06 00 00 00 00">
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit-reg" id="btnSubmitReg">Confirmer l'inscription</button>
+        </form>
+      </div>
+
+      <div class="reg-success" id="mSuccessBox">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0E8579" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 6px; display: block;">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+        <p style="font-weight: 800; font-size: 15px; margin-bottom: 4px;">Demande d'inscription enregistrée</p>
+        <p style="font-size: 12.5px; color: #16645A;">
+          Nous vous confirmons votre place le <strong>2 novembre à 16h15</strong> au Pôle Santé de Valence (4 rue du Clos Gaillard).
+        </p>
+        <button onclick="closeModal()" class="btn-screen btn-screen-ghost"
+          style="margin: 12px auto 0; display: inline-flex;">Fermer</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // ═════════════════════════════════════════════════════════════
+    // CONFIGURATION DU FORMULAIRE : GOOGLE SHEETS OU LIEN EXTERNE
+    // ═════════════════════════════════════════════════════════════
+    // MÉTHODE 2 (Google Sheets) : URL du Web App Google Apps Script
+    window.GOOGLE_SCRIPT_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbz8qV52oBFeTaavmU6HkOzLsG_zqI2TSEEjmV_M2BSQkB0CzSTrytvwEPml_AEoXZK9/exec";
+
+    // OPTIONNEL : Si vous préférez ouvrir un lien externe direct (Google Forms, Brevo...)
+    window.EXTERNAL_REGISTRATION_URL = "";
+
+    function openModal() {
+      if (window.EXTERNAL_REGISTRATION_URL && window.EXTERNAL_REGISTRATION_URL.trim() !== "") {
+        window.open(window.EXTERNAL_REGISTRATION_URL, "_blank");
+        return;
+      }
+      var m = document.getElementById("regModal");
+      if (m) {
+        m.classList.add("is-open");
+        document.body.style.overflow = "hidden";
+      }
+    }
+
+    function closeModal() {
+      var m = document.getElementById("regModal");
+      if (m) {
+        m.classList.remove("is-open");
+        document.body.style.overflow = "";
+      }
+    }
+
+    function onBackdropClick(e) {
+      if (e.target.id === "regModal") {
+        closeModal();
+      }
+    }
+
+    function onFormSubmit(e) {
+      e.preventDefault();
+      var btn = document.getElementById("btnSubmitReg");
+      var originalBtnText = btn ? btn.innerHTML : "Confirmer l'inscription";
+
+      var payload = {
+        nom: (document.getElementById("fNom") ? document.getElementById("fNom").value : "").trim(),
+        prenom: (document.getElementById("fPrenom") ? document.getElementById("fPrenom").value : "").trim(),
+        structure: (document.getElementById("fStructure") ? document.getElementById("fStructure").value : "").trim(),
+        fonction: (document.getElementById("fFonction") ? document.getElementById("fFonction").value : "").trim(),
+        places: document.getElementById("fSeats") ? document.getElementById("fSeats").value : "1",
+        email: (document.getElementById("fEmail") ? document.getElementById("fEmail").value : "").trim(),
+        telephone: (document.getElementById("fTel") ? document.getElementById("fTel").value : "").trim()
+      };
+
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<span>Enregistrement en cours...</span>';
+      }
+
+      function showSuccess() {
+        var f = document.getElementById("mFormBox");
+        var s = document.getElementById("mSuccessBox");
+        if (f && s) {
+          f.style.display = "none";
+          s.style.display = "block";
+        }
+      }
+
+      var webhookUrl = window.GOOGLE_SCRIPT_WEBHOOK_URL ? window.GOOGLE_SCRIPT_WEBHOOK_URL.trim() : "";
+      if (webhookUrl !== "") {
+        fetch(webhookUrl, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify(payload)
+        })
+        .then(function () {
+          showSuccess();
+        })
+        .catch(function (err) {
+          console.warn("Erreur envoi Google Sheets:", err);
+          showSuccess();
+        })
+        .finally(function () {
+          if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = originalBtnText;
+          }
+        });
+      } else {
+        // Mode simulation / hors-ligne si l'URL n'a pas encore été renseignée
+        setTimeout(function () {
+          showSuccess();
+          if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = originalBtnText;
+          }
+        }, 350);
+      }
+    }
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    });
+  </script>
+
+</body>
+
+</html>

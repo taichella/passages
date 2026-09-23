@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitation · Présentation PassageS à Valence (2 novembre)</title>
+  <meta name="description"
+    content="Invitation à la présentation du dispositif PassageS auprès des professionnel·le·s de la santé et du social. Le 2 novembre de 16h30 à 18h au Pôle Santé de Valence. Places limitées à 35 personnes.">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <!-- Google Fonts: Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ═════════════════════════════════════════════════════════════
+       VARIABLES & TOKENS CHARTE PASSAGES
+       ═════════════════════════════════════════════════════════════ */
+    :root {
+      --color-primary: #4500A7;
+      --color-primary-dark: #37027F;
+      --color-accent: #26EFDC;
+      --color-accent-dark: #14BFAF;
+      --color-purple: #6402EE;
+      --color-purple-hover: #4500A7;
+      --color-valence: #7C2582;
+      --color-bg-light: #F6F2FF;
+      --color-bg-subtle: #FAF7FE;
+      --color-bg-contrast: #F2ECFC;
+      --color-border-light: #E7DEFB;
+      --color-border-dark: #7C46E8;
+      --color-text-main: #16121F;
+      --color-text-muted: #534B62;
+      --color-text-subtle: #7A728A;
+      --color-white: #FFFFFF;
+      --font-main: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --shadow-sheet: 0 20px 60px rgba(69, 0, 167, 0.14), 0 4px 16px rgba(22, 18, 31, 0.06);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: #ECE5F8;
+      color: var(--color-text-main);
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+      padding: 24px 16px 60px;
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       BARRE D'ACTION ÉCRAN (NON IMPRIMÉE)
+       ═════════════════════════════════════════════════════════════ */
+    .screen-action-bar {
+      max-width: 860px;
+      margin: 0 auto 20px;
+      background: var(--color-white);
+      border-radius: 16px;
+      padding: 12px 20px;
+      box-shadow: 0 4px 20px rgba(69, 0, 167, 0.08);
+      border: 1px solid var(--color-border-light);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .screen-action-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #E8FBF8;
+      color: #0E8579;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid #B8F3EB;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-live::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: #14BFAF;
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(20, 191, 175, 0.25);
+    }
+
+    .screen-bar-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-primary-dark);
+    }
+
+    .screen-action-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-action-screen {
+      font-family: var(--font-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-print {
+      background: var(--color-primary);
+      color: var(--color-white);
+      box-shadow: 0 4px 12px rgba(69, 0, 167, 0.25);
+    }
+
+    .btn-print:hover {
+      background: var(--color-purple);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary-screen {
+      background: var(--color-bg-light);
+      color: var(--color-primary);
+      border-color: var(--color-border-light);
+    }
+
+    .btn-secondary-screen:hover {
+      background: var(--color-border-light);
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       CONTENEUR DU FLYER (CALIBRÉ POUR A4 & VUE ÉCRAN)
+       ═════════════════════════════════════════════════════════════ */
+    .flyer-sheet {
+      max-width: 840px;
+      margin: 0 auto;
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sheet);
+      border: 1px solid var(--color-border-light);
+      position: relative;
+      overflow: hidden;
+      padding: 34px 38px 28px;
+    }
+
+    /* Liseré supérieur aux couleurs du dispositif */
+    .flyer-sheet::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 7px;
+      background: linear-gradient(90deg, #4500A7 0%, #6402EE 45%, #26EFDC 85%, #7C2582 100%);
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       EN-TÊTE DU FLYER
+       ═════════════════════════════════════════════════════════════ */
+    .flyer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--color-border-light);
+      margin-bottom: 20px;
+    }
+
+    .flyer-brand-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .flyer-logo-passages {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .brand-subtext {
+      border-left: 2px solid var(--color-border-light);
+      padding-left: 12px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-subtext-main {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--color-primary-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      line-height: 1.2;
+    }
+
+    .brand-subtext-region {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+    }
+
+    .badge-invitation {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-purple) 100%);
+      color: var(--color-white);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 14px rgba(69, 0, 167, 0.2);
+      white-space: nowrap;
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       BLOC TITRE & ACCROCHE
+       ═════════════════════════════════════════════════════════════ */
+    .flyer-hero {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-bg-contrast);
+      color: var(--color-primary);
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+    }
+
+    .flyer-title {
+      font-size: 31px;
+      font-weight: 900;
+      color: var(--color-primary);
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .flyer-title span.highlight {
+      color: var(--color-purple);
+      background: linear-gradient(180deg, transparent 65%, rgba(38, 239, 220, 0.35) 65%);
+      padding: 0 4px;
+    }
+
+    .flyer-subtitle {
+      font-size: 16px;
+      color: var(--color-text-muted);
+      max-width: 680px;
+      margin: 0 auto;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       CARTOUCHE PARTENARIAT VILLE DE VALENCE (OBLIGATOIRE)
+       ═════════════════════════════════════════════════════════════ */
+    .partnership-banner {
+      background: linear-gradient(135deg, #FAF4FC 0%, #F5EEF9 100%);
+      border: 1.5px solid #E4CCE8;
+      border-left: 5px solid var(--color-valence);
+      border-radius: var(--radius-md);
+      padding: 13px 20px;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .partnership-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .partnership-logo-valence {
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 6px rgba(124, 37, 130, 0.2));
+    }
+
+    .partnership-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .partnership-mention {
+      font-size: 15.5px;
+      font-weight: 800;
+      color: var(--color-valence);
+      line-height: 1.25;
+      margin-bottom: 2px;
+    }
+
+    .partnership-detail {
+      font-size: 12.5px;
+      color: #634C69;
+      font-weight: 600;
+    }
+
+    .partnership-pill {
+      background: var(--color-valence);
+      color: var(--color-white);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 5px 12px;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       GRILLE DES 3 INFORMATIONS CLÉS (DATE, LIEU, JAUGE)
+       ═════════════════════════════════════════════════════════════ */
+    .key-info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr 1fr;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .info-card {
+      background: var(--color-bg-light);
+      border: 1px solid var(--color-border-light);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .info-card.card-featured {
+      background: linear-gradient(180deg, #F5EFFF 0%, #ECE2FE 100%);
+      border-color: var(--color-border-dark);
+      box-shadow: 0 4px 18px rgba(100, 2, 238, 0.08);
+    }
+
+    .info-card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .info-icon-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--color-primary);
+      color: var(--color-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .info-icon-badge.cyan {
+      background: #14BFAF;
+    }
+
+    .info-icon-badge.orange {
+      background: #D9480F;
+    }
+
+    .info-card-label {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-primary);
+    }
+
+    .info-card-value {
+      font-size: 17px;
+      font-weight: 900;
+      color: var(--color-text-main);
+      line-height: 1.25;
+      margin-bottom: 4px;
+    }
+
+    .info-card-sub {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      line-height: 1.35;
+      font-weight: 500;
+    }
+
+    .map-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--color-primary);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      margin-top: 6px;
+      transition: color 0.15s;
+    }
+
+    .map-link:hover {
+      color: var(--color-purple);
+    }
+
+    .badge-limit {
+      display: inline-block;
+      background: #FFE3D5;
+      color: #9C3608;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      margin-top: 6px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       CORPS DU FLYER (DEUX COLONNES D'ÉCHANGE & INSCRIPTION)
+       ═════════════════════════════════════════════════════════════ */
+    .flyer-body-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.88fr;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    .content-box {
+      background: var(--color-white);
+      border: 1px solid var(--color-border-light);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+    }
+
+    .section-mini-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-primary);
+      margin-bottom: 12px;
+    }
+
+    .program-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .timeline-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13.5px;
+      line-height: 1.35;
+    }
+
+    .timeline-hour {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--color-primary);
+      background: var(--color-bg-contrast);
+      padding: 2px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .timeline-desc {
+      color: var(--color-text-main);
+      font-weight: 600;
+    }
+
+    .timeline-desc strong {
+      color: var(--color-primary-dark);
+    }
+
+    .audience-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .audience-tag {
+      background: var(--color-bg-light);
+      color: var(--color-primary-dark);
+      border: 1px solid var(--color-border-light);
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       SECTION D'INSCRIPTION & QR CODE
+       ═════════════════════════════════════════════════════════════ */
+    .cta-card {
+      background: linear-gradient(145deg, #37027F 0%, #4500A7 100%);
+      color: var(--color-white);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 8px 24px rgba(69, 0, 167, 0.22);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-card::after {
+      content: "";
+      position: absolute;
+      right: -20px;
+      bottom: -20px;
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle, rgba(38, 239, 220, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-badge-alert {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(38, 239, 220, 0.2);
+      border: 1px solid rgba(38, 239, 220, 0.5);
+      color: #26EFDC;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+      width: fit-content;
+    }
+
+    .cta-title {
+      font-size: 17px;
+      font-weight: 900;
+      color: var(--color-white);
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+
+    .cta-desc {
+      font-size: 12.5px;
+      color: #E2D7FB;
+      line-height: 1.4;
+      margin-bottom: 14px;
+    }
+
+    .cta-btn-main {
+      font-family: var(--font-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--color-accent);
+      color: var(--color-primary-dark);
+      font-weight: 900;
+      font-size: 14.5px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(38, 239, 220, 0.35);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      letter-spacing: 0.01em;
+    }
+
+    .cta-btn-main:hover {
+      background: #4AFFE9;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(38, 239, 220, 0.45);
+    }
+
+    .cta-qr-box {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .qr-frame {
+      background: var(--color-white);
+      padding: 5px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qr-img {
+      width: 62px;
+      height: 62px;
+      display: block;
+    }
+
+    .qr-text {
+      font-size: 11.5px;
+      color: #E5DCFA;
+      line-height: 1.35;
+      font-weight: 600;
+    }
+
+    .qr-text strong {
+      color: var(--color-accent);
+      font-weight: 800;
+      display: block;
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       PIED DE PAGE : TOUS LES PARTENAIRES OFFICIELS
+       ═════════════════════════════════════════════════════════════ */
+    .flyer-footer {
+      border-top: 1.5px solid var(--color-border-light);
+      padding-top: 18px;
+      margin-top: 6px;
+    }
+
+    .footer-partner-label {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--color-text-subtle);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+
+    .footer-partners-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 16px;
+      flex-wrap: wrap;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-light);
+      border-radius: var(--radius-md);
+      padding: 12px 18px;
+      margin-bottom: 12px;
+    }
+
+    .partner-logo-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      gap: 4px;
+      transition: transform 0.2s;
+    }
+
+    .partner-logo-item:hover {
+      transform: translateY(-2px);
+    }
+
+    .partner-logo-img {
+      height: 38px;
+      width: auto;
+      max-width: 130px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .partner-logo-item.valence-item .partner-logo-img {
+      height: 42px;
+    }
+
+    .partner-logo-item.ars-item .partner-logo-img {
+      height: 32px;
+    }
+
+    .partner-logo-item.mimesis-item .partner-logo-img {
+      height: 36px;
+    }
+
+    .partner-logo-item.babel-item .partner-logo-img {
+      height: 38px;
+    }
+
+    .partner-logo-name {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--color-text-subtle);
+      text-align: center;
+    }
+
+    .flyer-contacts-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--color-text-muted);
+      font-weight: 600;
+      flex-wrap: wrap;
+      padding: 0 4px;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--color-text-muted);
+      text-decoration: none;
+    }
+
+    .contact-item:hover {
+      color: var(--color-primary);
+    }
+
+    .contact-item svg {
+      color: var(--color-primary);
+      flex-shrink: 0;
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       MODALE DE FORMULAIRE D'INSCRIPTION (POUR CONSULTATION WEB)
+       ═════════════════════════════════════════════════════════════ */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(22, 18, 31, 0.7);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--color-white);
+      max-width: 520px;
+      width: 100%;
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+      position: relative;
+      border: 1px solid var(--color-border-light);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: var(--color-bg-light);
+      border: none;
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--color-text-main);
+      font-weight: 800;
+      transition: background 0.2s;
+    }
+
+    .modal-close:hover {
+      background: var(--color-border-light);
+    }
+
+    .modal-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--color-primary);
+      margin-bottom: 6px;
+    }
+
+    .modal-desc {
+      font-size: 13.5px;
+      color: var(--color-text-muted);
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--color-text-main);
+      margin-bottom: 5px;
+    }
+
+    .form-input {
+      width: 100%;
+      font-family: var(--font-main);
+      font-size: 14px;
+      padding: 10px 14px;
+      border: 1.5px solid var(--color-border-light);
+      border-radius: 10px;
+      background: var(--color-bg-subtle);
+      color: var(--color-text-main);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-input:focus {
+      border-color: var(--color-purple);
+      background: var(--color-white);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .form-submit-btn {
+      width: 100%;
+      font-family: var(--font-main);
+      font-size: 15px;
+      font-weight: 900;
+      background: var(--color-primary);
+      color: var(--color-white);
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(69, 0, 167, 0.25);
+      transition: background 0.2s;
+      margin-top: 8px;
+    }
+
+    .form-submit-btn:hover {
+      background: var(--color-purple);
+    }
+
+    .modal-feedback {
+      display: none;
+      background: #E8FBF8;
+      border: 1px solid #14BFAF;
+      color: #0E8579;
+      padding: 16px;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       FEUILLE DE STYLE PRINT (IMPRESSION & EXPORT PDF A4)
+       ═════════════════════════════════════════════════════════════ */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 6mm 8mm;
+      }
+
+      body {
+        background: #FFFFFF !important;
+        padding: 0 !important;
+        color: #16121F !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .screen-action-bar,
+      .modal-overlay {
+        display: none !important;
+      }
+
+      .flyer-sheet {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 12px 14px 10px !important;
+        max-width: 100% !important;
+        border-radius: 0 !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      .flyer-sheet::before {
+        height: 6px !important;
+      }
+
+      .flyer-header {
+        margin-bottom: 12px !important;
+        padding-bottom: 10px !important;
+      }
+
+      .flyer-title {
+        font-size: 26px !important;
+        margin-bottom: 4px !important;
+      }
+
+      .flyer-subtitle {
+        font-size: 14.5px !important;
+      }
+
+      .partnership-banner {
+        padding: 10px 14px !important;
+        margin-bottom: 14px !important;
+        border-width: 1px !important;
+      }
+
+      .partnership-mention {
+        font-size: 14.5px !important;
+      }
+
+      .key-info-grid {
+        gap: 10px !important;
+        margin-bottom: 14px !important;
+      }
+
+      .info-card {
+        padding: 10px 12px !important;
+      }
+
+      .info-card-value {
+        font-size: 15.5px !important;
+      }
+
+      .flyer-body-grid {
+        gap: 12px !important;
+        margin-bottom: 14px !important;
+      }
+
+      .content-box {
+        padding: 12px 14px !important;
+      }
+
+      .timeline-item {
+        font-size: 12.5px !important;
+      }
+
+      .cta-card {
+        padding: 12px 14px !important;
+      }
+
+      .cta-title {
+        font-size: 15.5px !important;
+      }
+
+      .cta-desc {
+        font-size: 11.5px !important;
+        margin-bottom: 8px !important;
+      }
+
+      .cta-btn-main {
+        padding: 8px 12px !important;
+        font-size: 13px !important;
+      }
+
+      .cta-qr-box {
+        margin-top: 8px !important;
+        padding-top: 8px !important;
+      }
+
+      .qr-img {
+        width: 54px !important;
+        height: 54px !important;
+      }
+
+      .flyer-footer {
+        padding-top: 10px !important;
+        margin-top: 2px !important;
+      }
+
+      .footer-partners-bar {
+        padding: 8px 12px !important;
+        margin-bottom: 6px !important;
+      }
+
+      .partner-logo-img {
+        height: 32px !important;
+      }
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       RESPONSIVE MOBILE
+       ═════════════════════════════════════════════════════════════ */
+    @media (max-width: 768px) {
+      body {
+        padding: 14px 10px 40px;
+      }
+
+      .flyer-sheet {
+        padding: 24px 18px 20px;
+      }
+
+      .flyer-title {
+        font-size: 24px;
+      }
+
+      .key-info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .flyer-body-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .partnership-banner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .flyer-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .footer-partners-bar {
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .flyer-contacts-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- BARRE D'ACTIONS ÉCRAN (MASQUÉE À L'IMPRESSION) -->
+  <div class="screen-action-bar">
+    <div class="screen-action-left">
+      <span class="badge-live">Flyer Officiel</span>
+      <span class="screen-bar-title">PassageS · Présentation territoriale à Valence</span>
+    </div>
+    <div class="screen-action-right">
+      <button onclick="window.print()" class="btn-action-screen btn-print" title="Imprimer ou enregistrer en PDF">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+          <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        <span>Imprimer / PDF A4</span>
+      </button>
+      <button onclick="openModal()" class="btn-action-screen btn-secondary-screen" title="S'inscrire en ligne">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <line x1="19" y1="8" x2="19" y2="14"></line>
+          <line x1="22" y1="11" x2="16" y2="11"></line>
+        </svg>
+        <span>Formulaire</span>
+      </button>
+      <a href="index.html" class="btn-action-screen btn-secondary-screen" title="Retour au site PassageS">
+        <span>Site web</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- FEUILLE DU FLYER (IMPRIMABLE A4) -->
+  <main class="flyer-sheet">
+
+    <!-- EN-TÊTE DU FLYER -->
+    <header class="flyer-header">
+      <div class="flyer-brand-group">
+        <img src="images/logo-passages-color-main.svg" alt="PassageS" class="flyer-logo-passages">
+        <div class="brand-subtext">
+          <span class="brand-subtext-main">Médiation Transculturelle</span>
+          <span class="brand-subtext-region">Drôme & Ardèche · Soin & Social</span>
+        </div>
+      </div>
+      <div class="badge-invitation">
+        Invitation Professionnelle
+      </div>
+    </header>
+
+    <!-- SECTION TITRE & SOUS-TITRE -->
+    <section class="flyer-hero">
+      <div class="hero-eyebrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polygon points="12 8 8 12 12 16 12 8"></polygon>
+        </svg>
+        <span>Rencontre territoriale · Valence</span>
+      </div>
+      <h1 class="flyer-title">Présentation du dispositif <span class="highlight">PassageS</span></h1>
+      <p class="flyer-subtitle">Une équipe mobile de médiation transculturelle auprès des professionnel·le·s de la
+        santé, du soin, du social et du médico-social en Drôme-Ardèche.</p>
+    </section>
+
+    <!-- MENTION OBLIGATOIRE DU PARTENARIAT DE LA VILLE DE VALENCE -->
+    <section class="partnership-banner">
+      <div class="partnership-left">
+        <img src="images/logo-ville-valence.svg" alt="Ville de Valence" class="partnership-logo-valence">
+        <div class="partnership-text">
+          <span class="partnership-mention">En partenariat avec la Direction Santé Publique de la ville de Valence</span>
+          <span class="partnership-detail">Pour favoriser l'accès aux soins, la continuité des droits et l'alliance
+            thérapeutique auprès des publics migrants.</span>
+        </div>
+      </div>
+      <span class="partnership-pill">Partenaire santé</span>
+    </section>
+
+    <!-- GRILLE DES 3 INFORMATIONS PRATIQUES -->
+    <section class="key-info-grid">
+      <!-- DATE & HEURE -->
+      <div class="info-card card-featured">
+        <div class="info-card-header">
+          <div class="info-icon-badge">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </div>
+          <span class="info-card-label">Date & Horaires</span>
+        </div>
+        <div class="info-card-value">2 novembre</div>
+        <div class="info-card-sub">
+          <strong>16h30 à 18h00</strong><br>
+          <span style="font-size: 11.5px; color: var(--color-purple); font-weight: 700;">Accueil dès 16h15</span>
+        </div>
+      </div>
+
+      <!-- LIEU & ADRESSE -->
+      <div class="info-card">
+        <div class="info-card-header">
+          <div class="info-icon-badge cyan">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <span class="info-card-label">Lieu de la rencontre</span>
+        </div>
+        <div class="info-card-value" style="font-size: 15.5px;">Pôle Santé de Valence</div>
+        <div class="info-card-sub">
+          <strong>Espace prévention</strong><br>
+          4 rue du Clos Gaillard, 26000 VALENCE
+        </div>
+        <a href="https://www.google.com/maps/search/4+rue+du+Clos+Gaillard,+26000+VALENCE?entry=gmail&source=g"
+          target="_blank" rel="noopener" class="map-link">
+          <span>Voir sur Google Maps</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+      </div>
+
+      <!-- JAUGE & PARTICIPATION -->
+      <div class="info-card">
+        <div class="info-card-header">
+          <div class="info-icon-badge orange">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <span class="info-card-label">Conditions d'accès</span>
+        </div>
+        <div class="info-card-value" style="color: #D9480F; font-size: 16px;">Jauge limitée</div>
+        <div class="info-card-sub">
+          <strong>Places limitées à 35 personnes</strong><br>
+          Inscription obligatoire pour les structures.
+        </div>
+        <span class="badge-limit">Gratuit sur inscription</span>
+      </div>
+    </section>
+
+    <!-- CORPS DU FLYER : DÉROULÉ & APPEL À INSCRIPTION -->
+    <section class="flyer-body-grid">
+
+      <!-- COLONNE GAUCHE : PROGRAMME DE LA PRÉSENTATION -->
+      <div class="content-box">
+        <div class="section-mini-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="8" y1="6" x2="21" y2="6"></line>
+            <line x1="8" y1="12" x2="21" y2="12"></line>
+            <line x1="8" y1="18" x2="21" y2="18"></line>
+            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+          </svg>
+          <span>Au programme de la rencontre</span>
+        </div>
+
+        <div class="program-timeline">
+          <div class="timeline-item">
+            <span class="timeline-hour">16h30</span>
+            <div class="timeline-desc">
+              <strong>Mot d'accueil</strong> par la <em>Direction Santé Publique de la Ville de Valence</em> &
+              introduction par l'équipe PassageS.
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-hour">16h45</span>
+            <div class="timeline-desc">
+              <strong>Qu'est-ce que la médiation transculturelle ?</strong> Modèle éprouvé du <em>Centre Babel</em>
+              (Paris) adapté au territoire Drôme-Ardèche : principes d'action, posture et équipe pluridisciplinaire.
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-hour">17h15</span>
+            <div class="timeline-desc">
+              <strong>Cas concrets & situations d'achoppement :</strong> barrière linguistique, représentations de la
+              maladie, traumatismes de l'exil, rupture de soins et rétablissement du lien de confiance.
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-hour">17h35</span>
+            <div class="timeline-desc">
+              <strong>Modalités pratiques de saisine & échanges :</strong> comment solliciter l'équipe mobile (gratuité
+              totale pour les professionnels) et temps de questions-réponses.
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-hour">18h00</span>
+            <div class="timeline-desc">
+              <strong>Clôture de la séance</strong> & temps informel de convivialité.
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 14px; padding-top: 10px; border-top: 1px dashed var(--color-border-light);">
+          <span style="font-size: 11px; font-weight: 800; color: var(--color-text-subtle); text-transform: uppercase;">
+            Public concerné :
+          </span>
+          <div class="audience-tags">
+            <span class="audience-tag">Médecins & Soignant·e·s</span>
+            <span class="audience-tag">Assistant·e·s de service social</span>
+            <span class="audience-tag">Éducateur·rice·s</span>
+            <span class="audience-tag">Psychologues & Psychiatres</span>
+            <span class="audience-tag">Équipes hospitalières & libérales</span>
+            <span class="audience-tag">Structures d'accueil & associations</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLONNE DROITE : CARTE D'INSCRIPTION & QR CODE -->
+      <div class="cta-card" id="inscription">
+        <div>
+          <span class="cta-badge-alert">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            Places limitées à 35
+          </span>
+          <h2 class="cta-title">Inscription préalable recommandée</h2>
+          <p class="cta-desc">
+            Pour garantir la qualité des échanges et la capacité de la salle, merci de bien vouloir confirmer votre
+            participation en ligne avant l'événement.
+          </p>
+
+          <button onclick="openModal()" class="cta-btn-main" id="btnInscriptionForm">
+            <span>S'inscrire à la présentation</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+
+        <!-- ZONE QR CODE POUR IMPRESSION & SMARTPHONE -->
+        <div class="cta-qr-box">
+          <div class="qr-frame">
+            <img src="images/qr-inscription-valence.svg" alt="QR Code d'inscription" class="qr-img">
+          </div>
+          <div class="qr-text">
+            <strong>Inscription instantanée</strong>
+            Scannez ce QR Code avec l'appareil photo de votre smartphone pour accéder au formulaire d'inscription.
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- PIED DE PAGE : LOGOS INSTITUTIONNELS REQUIS -->
+    <footer class="flyer-footer">
+      <div class="footer-partner-label">Dispositif porté en partenariat avec les acteurs institutionnels</div>
+
+      <div class="footer-partners-bar">
+        <!-- Logo 1 : PassageS -->
+        <a href="index.html" class="partner-logo-item" title="Dispositif PassageS">
+          <img src="images/logo-passages-color-main.svg" alt="PassageS" class="partner-logo-img">
+          <span class="partner-logo-name">PassageS</span>
+        </a>
+
+        <!-- Logo 2 : Ville de Valence (avec la mention du partenariat) -->
+        <a href="https://www.google.com/maps/search/4+rue+du+Clos+Gaillard,+26000+VALENCE?entry=gmail&source=g"
+          target="_blank" rel="noopener" class="partner-logo-item valence-item"
+          title="Ville de Valence - Direction Santé Publique">
+          <img src="images/logo-ville-valence.svg" alt="Ville de Valence" class="partner-logo-img">
+          <span class="partner-logo-name" style="color: var(--color-valence);">Ville de Valence</span>
+        </a>
+
+        <!-- Logo 3 : Centre Babel -->
+        <a href="https://centre-babel.fr/" target="_blank" rel="noopener" class="partner-logo-item babel-item"
+          title="Centre Babel - Clinique transculturelle">
+          <img src="images/logo-centre-babel-color-black.svg" alt="Centre Babel" class="partner-logo-img">
+          <span class="partner-logo-name">Centre Babel</span>
+        </a>
+
+        <!-- Logo 4 : ARS Auvergne-Rhône-Alpes -->
+        <a href="https://www.auvergne-rhone-alpes.ars.sante.fr/" target="_blank" rel="noopener"
+          class="partner-logo-item ars-item" title="ARS Auvergne-Rhône-Alpes">
+          <img src="images/logo-ars.svg" alt="ARS Auvergne-Rhône-Alpes" class="partner-logo-img">
+          <span class="partner-logo-name">ARS AuRA</span>
+        </a>
+
+        <!-- Logo 5 : Mimesis -->
+        <a href="https://mimesis-asso.fr/projet-passages/" target="_blank" rel="noopener"
+          class="partner-logo-item mimesis-item" title="Association Mimesis">
+          <img src="images/logo-mimesis-color-black.svg" alt="Association Mimesis" class="partner-logo-img">
+          <span class="partner-logo-name">Association Mimesis</span>
+        </a>
+      </div>
+
+      <!-- COORDONNÉES & CONTACTS -->
+      <div class="flyer-contacts-row">
+        <a href="mailto:passages26@mimesis-asso.fr" class="contact-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+          </svg>
+          <span>passages26@mimesis-asso.fr</span>
+        </a>
+        <a href="tel:+33686413059" class="contact-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+            </path>
+          </svg>
+          <span>06 86 41 30 59</span>
+        </a>
+        <div class="contact-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span>passages.mimesis-asso.fr</span>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- MODALE D'INSCRIPTION INTERACTIVE -->
+  <div class="modal-overlay" id="registrationModal" onclick="handleBackdropClick(event)">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" onclick="closeModal()" aria-label="Fermer la fenêtre">✕</button>
+
+      <h3 class="modal-title" id="modalTitle">Inscription à la présentation</h3>
+      <p class="modal-desc">
+        Présentation PassageS · <strong>2 novembre (16h30 – 18h)</strong> au Pôle Santé de Valence (Places limitées à 35).
+      </p>
+
+      <div id="modalFormContainer">
+        <form onsubmit="handleRegistrationSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="regNom">Nom *</label>
+              <input type="text" id="regNom" class="form-input" required placeholder="Votre nom">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="regPrenom">Prénom *</label>
+              <input type="text" id="regPrenom" class="form-input" required placeholder="Votre prénom">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="regStructure">Structure / Institution *</label>
+            <input type="text" id="regStructure" class="form-input" required
+              placeholder="Ex : CH de Valence, CCAS, PMI, CHRS...">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="regFonction">Fonction / Rôle *</label>
+              <input type="text" id="regFonction" class="form-input" required
+                placeholder="Ex : Médecin, ASS, Éducateur...">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="regPlaces">Nb de personnes *</label>
+              <select id="regPlaces" class="form-input" style="height: 42px;">
+                <option value="1">1 place</option>
+                <option value="2">2 places</option>
+                <option value="3">3 places</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="regEmail">Adresse e-mail professionnelle *</label>
+              <input type="email" id="regEmail" class="form-input" required placeholder="nom@structure.fr">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="regTel">Téléphone</label>
+              <input type="tel" id="regTel" class="form-input" placeholder="06 00 00 00 00">
+            </div>
+          </div>
+
+          <button type="submit" class="form-submit-btn">
+            Confirmer mon inscription (Gratuit)
+          </button>
+        </form>
+      </div>
+
+      <div class="modal-feedback" id="modalFeedback">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0E8579" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 8px; display: block;">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+        <p style="font-size: 16px; font-weight: 800; margin-bottom: 6px;">Votre demande d'inscription est bien enregistrée !</p>
+        <p style="font-size: 13px; font-weight: 500; color: #15665D;">
+          Un e-mail de confirmation vous sera adressé. Nous vous donnons rendez-vous le <strong>2 novembre à 16h15</strong> au Pôle Santé de Valence (4 rue du Clos Gaillard).
+        </p>
+        <button onclick="closeModal()" class="btn-action-screen btn-secondary-screen"
+          style="margin: 14px auto 0; display: inline-flex;">Fermer</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Configuration de l'URL du formulaire externe si souhaité :
+    // Si vous disposez d'un formulaire Tally/Google Forms/Brevo, remplacez la valeur ci-dessous.
+    window.EXTERNAL_REGISTRATION_URL = "";
+
+    function openModal() {
+      if (window.EXTERNAL_REGISTRATION_URL && window.EXTERNAL_REGISTRATION_URL.trim() !== "") {
+        window.open(window.EXTERNAL_REGISTRATION_URL, "_blank");
+        return;
+      }
+      var modal = document.getElementById("registrationModal");
+      if (modal) {
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+    }
+
+    function closeModal() {
+      var modal = document.getElementById("registrationModal");
+      if (modal) {
+        modal.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+    }
+
+    function handleBackdropClick(e) {
+      if (e.target.id === "registrationModal") {
+        closeModal();
+      }
+    }
+
+    function handleRegistrationSubmit(e) {
+      e.preventDefault();
+      var formContainer = document.getElementById("modalFormContainer");
+      var feedback = document.getElementById("modalFeedback");
+      if (formContainer && feedback) {
+        formContainer.style.display = "none";
+        feedback.style.display = "block";
+      }
+    }
+
+    // Gestion de la touche Échap
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    });
+  </script>
+
+</body>
+
+</html>
