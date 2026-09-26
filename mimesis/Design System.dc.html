@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,600&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:#F7F2E4}
+*{box-sizing:border-box}
+a{color:#F0574F;text-decoration:none}
+a:hover{color:#14110E;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+@keyframes ds-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes ds-tilt{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(6deg)}}
+</style>
+</helmet>
+
+<div style="background:#F7F2E4;font-family:Barlow,system-ui,sans-serif;color:#14110E">
+
+<!-- side rail nav -->
+<nav style="position:fixed;left:0;top:0;bottom:0;width:60px;z-index:70;background:#14110E;display:flex;flex-direction:column;align-items:center;padding:16px 0;gap:4px">
+  <span style="display:grid;grid-template-columns:repeat(2,9px);gap:2px;margin-bottom:14px">
+    <span style="height:9px;background:#F7F2E4"></span><span style="height:9px;background:#EFC219"></span>
+    <span style="height:9px;background:#F0574F"></span><span style="height:9px;background:#F7F2E4"></span>
+  </span>
+  <sc-for list="{{ railItems }}" as="r" hint-placeholder-count="8">
+    <a href="{{ r.href }}" title="{{ r.label }}" style="writing-mode:vertical-rl;font-family:Barlow,sans-serif;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:#F7F2E4;padding:10px 0;opacity:.6" style-hover="opacity:1;color:#EFC219">{{ r.label }}</a>
+  </sc-for>
+</nav>
+
+<div style="margin-left:60px">
+
+<!-- ══ HERO ══ -->
+<header id="intro" style="border-bottom:2px solid #14110E;padding:72px 40px 0;position:relative;overflow:hidden">
+  <div style="max-width:1180px;margin:0 auto">
+    <p style="font-family:Barlow,sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin:0 0 26px;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+      <span style="background:#EFC219;padding:4px 9px">Système de design</span>
+      <span style="opacity:.6">Version 1.0 · Septembre 2026</span>
+    </p>
+    <h1 style="font-family:'Archivo Black',sans-serif;font-size:clamp(44px,7.5vw,112px);line-height:.96;letter-spacing:-.03em;margin:0 0 30px;text-transform:uppercase">Mimesis,<br>de l'imprimé<br><span style="background:#EFC219;padding:0 .08em">à l'écran</span></h1>
+    <p style="font-size:clamp(18px,2.2vw,23px);line-height:1.5;max-width:60ch;margin:0 0 44px">L'identité de l'association — <em>Arts, Recherches, Actions</em> — tirée de ses affiches plutôt que redessinée. Couleurs échantillonnées au pixel, motifs découpés dans les originaux, une voix typographique par usage. Voici comment tout tient ensemble.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:0;border-top:2px solid #14110E;border-left:2px solid #14110E">
+      <sc-for list="{{ heroStats }}" as="s" hint-placeholder-count="4">
+        <div style="flex:1;min-width:160px;border-right:2px solid #14110E;border-bottom:2px solid #14110E;padding:22px 24px">
+          <div style="font-family:'Archivo Black',sans-serif;font-size:44px;line-height:1">{{ s.n }}</div>
+          <div style="font-family:Barlow,sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7;margin-top:4px">{{ s.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <div style="height:38px;background:url(assets/motif-ribbon-folk.png) repeat-x left center;background-size:auto 100%;margin-top:56px"></div>
+</header>
+
+<!-- ══ PRINCIPES ══ -->
+<section id="principes" style="padding:72px 40px;border-bottom:2px solid #14110E">
+  <div style="max-width:1180px;margin:0 auto">
+    <p style="font-family:Barlow,sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 10px;opacity:.65">01 — Fondations</p>
+    <h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(32px,5vw,56px);line-height:1;margin:0 0 40px;text-transform:uppercase">Cinq principes</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0;border-top:2px solid #14110E;border-left:2px solid #14110E">
+      <sc-for list="{{ principes }}" as="p" hint-placeholder-count="5">
+        <div style="border-right:2px solid #14110E;border-bottom:2px solid #14110E;padding:28px;display:flex;flex-direction:column;gap:12px;background:{{ p.bg }};color:{{ p.fg }}">
+          <span style="font-family:'Archivo Black',sans-serif;font-size:22px;opacity:.35">{{ p.num }}</span>
+          <h3 style="font-family:'Archivo Black',sans-serif;font-size:24px;line-height:1.05;margin:0;text-transform:uppercase">{{ p.title }}</h3>
+          <p style="margin:0;font-size:15.5px;line-height:1.55">{{ p.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COULEURS ══ -->
+<section id="couleurs" style="padding:72px 40px;border-bottom:2px solid #14110E;background:#EDE4CE">
+  <div style="max-width:1180px;margin:0 auto">
+    <p style="font-family:Barlow,sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 10px;opacity:.65">02 — Couleurs</p>
+    <h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(32px,5vw,56px);line-height:1;margin:0 0 14px;text-transform:uppercase">Encre sur papier crème</h2>
+    <p style="font-size:18px;line-height:1.5;max-width:58ch;margin:0 0 40px">L'encre <code style="font-family:Barlow,sans-serif;font-size:14px">#14110E</code> sur crème <code style="font-family:Barlow,sans-serif;font-size:14px">#F7F2E4</code> est la constante. Le jaune est la voix, le corail l'attention. Une à deux couleurs de fond par page, jamais deux bandes accentuées de suite.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px">
+      <sc-for list="{{ swatches }}" as="c" hint-placeholder-count="9">
+        <div style="border:2px solid #14110E;background:#F7F2E4">
+          <div style="height:96px;background:{{ c.hex }};border-bottom:2px solid #14110E"></div>
+          <div style="padding:12px 14px">
+            <div style="font-family:'Archivo Black',sans-serif;font-size:16px;text-transform:uppercase">{{ c.name }}</div>
+            <div style="font-family:Barlow,sans-serif;font-size:11px;opacity:.6;margin-top:2px">{{ c.hex }}</div>
+            <div style="font-family:Barlow,sans-serif;font-size:10px;letter-spacing:.06em;text-transform:uppercase;margin-top:8px;opacity:.75">{{ c.role }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px">
+      <sc-for list="{{ pairings }}" as="pr" hint-placeholder-count="4">
+        <div style="border:2px solid #14110E;padding:16px 18px;background:{{ pr.bg }};color:{{ pr.fg }};min-height:92px;display:flex;flex-direction:column;justify-content:space-between">
+          <span style="font-weight:700;font-size:16px">{{ pr.label }}</span>
+          <span style="font-family:Barlow,sans-serif;font-size:11px;opacity:.85">{{ pr.ratio }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TYPO ══ -->
+<section id="typographie" style="padding:72px 40px;border-bottom:2px solid #14110E">
+  <div style="max-width:1180px;margin:0 auto">
+    <p style="font-family:Barlow,sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 10px;opacity:.65">03 — Typographie</p>
+    <h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(32px,5vw,56px);line-height:1;margin:0 0 14px;text-transform:uppercase">Deux polices, trois rôles</h2>
+    <p style="font-size:15px;line-height:1.5;max-width:58ch;margin:0 0 40px;font-family:Barlow,sans-serif"><span style="background:#F3E3A6;padding:2px 6px">Substitution : polices Google Fonts au plus proche de l'imprimé — à remplacer par les fichiers d'origine.</span></p>
+    <div style="display:flex;flex-direction:column;gap:0;border-top:2px solid #14110E">
+      <sc-for list="{{ fonts }}" as="f" hint-placeholder-count="4">
+        <div style="border-bottom:2px solid #14110E;padding:26px 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,180px);gap:24px;align-items:center">
+          <div>
+            <div style="{{ f.sample }}">{{ f.text }}</div>
+          </div>
+          <div style="font-family:Barlow,sans-serif;font-size:11px;letter-spacing:.06em;line-height:1.6">
+            <div style="font-family:'Archivo Black',sans-serif;font-size:17px;letter-spacing:0;text-transform:uppercase">{{ f.name }}</div>
+            <div style="opacity:.7;margin-top:6px;text-transform:uppercase">{{ f.role }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- marquee -->
+<div style="background:#14110E;color:#F7F2E4;overflow:hidden;border-bottom:2px solid #14110E">
+  <div style="display:flex;width:max-content;animation:ds-marquee 26s linear infinite;font-family:'Archivo Black',sans-serif;font-size:22px;padding:11px 0">
+    <span>MIMESIS <span style="color:#EFC219">✳</span> ARTS <span style="color:#F0574F">✳</span> RECHERCHES <span style="color:#F07818">✳</span> ACTIONS <span style="color:#2E6FB7">✳</span> MIMESIS <span style="color:#EFC219">✳</span> ARTS <span style="color:#F0574F">✳</span> RECHERCHES <span style="color:#F07818">✳</span> ACTIONS <span style="color:#2E6FB7">✳</span>&nbsp;</span>
+    <span>MIMESIS <span style="color:#EFC219">✳</span> ARTS <span style="color:#F0574F">✳</span> RECHERCHES <span style="color:#F07818">✳</span> ACTIONS <span style="color:#2E6FB7">✳</span> MIMESIS <span style="color:#EFC219">✳</span> ARTS <span style="color:#F0574F">✳</span> RECHERCHES <span style="color:#F07818">✳</span> ACTIONS <span style="color:#2E6FB7">✳</span>&nbsp;</span>
+  </div>
+</div>
+
+<!-- ══ MOTIFS ══ -->
+<section id="motifs" style="padding:72px 40px;border-bottom:2px solid #14110E;background:#14110E;color:#F7F2E4">
+  <div style="max-width:1180px;margin:0 auto">
+    <p style="font-family:Barlow,sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 10px;opacity:.6">04 — Motifs de marque</p>
+    <h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(32px,5vw,56px);line-height:1;margin:0 0 14px;text-transform:uppercase;color:#F7F2E4">Découpés dans les affiches</h2>
+    <p style="font-size:18px;line-height:1.5;max-width:58ch;margin:0 0 44px;opacity:.85">Ces marques ne sont pas dessinées : elles sont scannées puis recolorées à partir des flyers. Elles remplacent les icônes décoratives.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px">
+      <div style="background:#F7F2E4;border:2px solid #14110E;padding:26px;color:#14110E">
+        <p style="font-family:Barlow,sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 18px;opacity:.7">Surligneur</p>
+        <div style="font-family:'Archivo Black',sans-serif;font-size:30px;line-height:1;text-transform:uppercase">Histoires <span style="background:#EFC219;padding:0 .1em">silencieuses</span></div>
+        <div style="font-family:Barlow,sans-serif;font-size:13px;margin-top:16px"><span style="background:#F3E3A6;padding:2px 6px">Collectes sonores</span></div>
+      </div>
+      <div style="background:#F7F2E4;border:2px solid #14110E;padding:26px;color:#14110E;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap">
+        <span style="width:120px;height:120px;background:#F0574F;color:#fff;clip-path:polygon(50% 0,61% 12%,76% 6%,80% 22%,95% 24%,91% 40%,104% 50%,91% 60%,95% 76%,80% 78%,76% 94%,61% 88%,50% 100%,39% 88%,24% 94%,20% 78%,5% 76%,9% 60%,-4% 50%,9% 40%,5% 24%,20% 22%,24% 6%,39% 12%);display:grid;place-items:center;text-align:center;padding:18%;font-family:Barlow,sans-serif;font-style:italic;font-weight:600;font-size:13px;line-height:1.2;animation:ds-tilt 6s ease-in-out infinite">Une proposition de Hélène Poté</span>
+        <span style="font-family:Barlow,sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7;max-width:110px">Explosion découpée — attribution, un seul CTA par page</span>
+      </div>
+    </div>
+
+    <div style="margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px">
+      <div style="border:2px solid rgba(247,242,228,.4);padding:20px">
+        <p style="font-family:Barlow,sans-serif;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.6;margin:0 0 14px">Rubans scannés</p>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="height:34px;background:url(assets/motif-ribbon-folk.png) repeat-x left center;background-size:auto 100%"></div>
+          <div style="height:34px;background:#F7F2E4;padding:2px"><div style="height:100%;background:url(assets/motif-strip-blue.png) repeat-x left center;background-size:auto 100%"></div></div>
+        </div>
+      </div>
+      <div style="border:2px solid rgba(247,242,228,.4);padding:20px">
+        <p style="font-family:Barlow,sans-serif;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.6;margin:0 0 14px">Flèches au pinceau</p>
+        <div style="display:flex;flex-direction:column;gap:10px;background:#F7F2E4;padding:14px;border:2px solid #14110E">
+          <img src="assets/motif-arrow-ink.png" alt="" style="width:170px;display:block">
+          <img src="assets/motif-arrow-coral.png" alt="" style="width:170px;display:block">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COMPOSANTS ══ -->
+<section id="composants" style="padding:72px 40px;border-bottom:2px solid #14110E">
+  <div style="max-width:1180px;margin:0 auto">
+    <p style="font-family:Barlow,sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 10px;opacity:.65">05 — Bibliothèque</p>
+    <h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(32px,5vw,56px);line-height:1;margin:0 0 14px;text-transform:uppercase">28 composants</h2>
+    <p style="font-size:18px;line-height:1.5;max-width:58ch;margin:0 0 40px">Répartis en quatre familles. Chacun documenté avec ses règles d'usage et ses types.</p>
+
+    <!-- live samples -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-bottom:40px">
+      <div style="border:2px solid #14110E;padding:24px;background:#F7F2E4;display:flex;flex-direction:column;gap:14px">
+        <span style="font-family:Barlow,sans-serif;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.6">Boutons</span>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <span style="background:#14110E;color:#F7F2E4;padding:12px 18px;font-weight:700;box-shadow:4px 4px 0 #F0574F;cursor:pointer;transition:transform .14s cubic-bezier(.2,.8,.2,1),box-shadow .14s cubic-bezier(.2,.8,.2,1)" style-hover="transform:translate(-2px,-2px);box-shadow:7px 7px 0 #F0574F" style-active="transform:translate(1px,1px);box-shadow:none">Visiter l'expo</span>
+          <span style="background:#F0574F;color:#fff;padding:12px 18px;font-weight:700;border:2px solid #14110E;box-shadow:3px 3px 0 #14110E;cursor:pointer;transition:transform .14s cubic-bezier(.2,.8,.2,1),box-shadow .14s cubic-bezier(.2,.8,.2,1)" style-hover="transform:translate(-2px,-2px);box-shadow:6px 6px 0 #14110E" style-active="transform:translate(1px,1px);box-shadow:none">Adhérer</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <span style="border:2px solid #14110E;padding:10px 16px;font-weight:700;background:#F7F2E4;cursor:pointer;transition:transform .14s cubic-bezier(.2,.8,.2,1),box-shadow .14s cubic-bezier(.2,.8,.2,1)" style-hover="background:#EFC219;transform:translate(-2px,-2px);box-shadow:5px 5px 0 #14110E" style-active="transform:translate(1px,1px);box-shadow:none">Les projets</span>
+          <span style="background:#EFC219;padding:10px 16px;font-weight:700;border:2px solid #14110E;box-shadow:3px 3px 0 #14110E;cursor:pointer;transition:transform .14s cubic-bezier(.2,.8,.2,1),box-shadow .14s cubic-bezier(.2,.8,.2,1)" style-hover="transform:translate(-2px,-2px);box-shadow:6px 6px 0 #14110E" style-active="transform:translate(1px,1px);box-shadow:none">Participer</span>
+        </div>
+      </div>
+      <div style="border:2px solid #14110E;padding:24px;background:#F7F2E4;display:flex;flex-direction:column;gap:12px">
+        <span style="font-family:Barlow,sans-serif;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.6">Étiquettes</span>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+          <span style="font-family:Barlow,sans-serif;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;background:#14110E;color:#F7F2E4;padding:3px 8px">En cours</span>
+          <span style="font-family:Barlow,sans-serif;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;background:#EFC219;padding:3px 8px;border:1px solid #14110E">Restitué</span>
+          <span style="font-family:Barlow,sans-serif;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;border:1px solid rgba(20,17,14,.35);padding:3px 8px">Santé · Droits</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span style="font-family:Barlow,sans-serif;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;padding:8px 14px;border:2px solid #14110E;background:#14110E;color:#F7F2E4;font-weight:700">À venir</span>
+          <span style="font-family:Barlow,sans-serif;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;padding:8px 14px;border:2px solid #14110E">Passés</span>
+        </div>
+      </div>
+      <div style="border:2px solid #14110E;background:#fff;display:flex;flex-direction:column">
+        <span style="height:12px;background:#2E6FB7;border-bottom:2px solid #14110E"></span>
+        <div style="padding:20px;display:flex;flex-direction:column;gap:9px;flex:1">
+          <span style="font-family:Barlow,sans-serif;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;background:#14110E;color:#F7F2E4;padding:3px 8px;width:fit-content">En cours</span>
+          <span style="font-family:'Archivo Black',sans-serif;font-size:20px;text-transform:uppercase;line-height:1.1">PassageS</span>
+          <span style="font-size:14.5px;line-height:1.5;opacity:.8">Dépasser la barrière de la langue dans le soin.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- family index -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;border-top:2px solid #14110E;border-left:2px solid #14110E">
+      <sc-for list="{{ families }}" as="fam" hint-placeholder-count="4">
+        <div style="border-right:2px solid #14110E;border-bottom:2px solid #14110E;padding:24px">
+          <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
+            <span style="font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase">{{ fam.name }}</span>
+            <span style="font-family:Barlow,sans-serif;font-size:11px;opacity:.55">{{ fam.count }}</span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <sc-for list="{{ fam.items }}" as="it" hint-placeholder-count="6">
+              <span style="font-family:Barlow,sans-serif;font-size:11px;border:1px solid rgba(20,17,14,.3);padding:4px 8px">{{ it }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ÉCRANS ══ -->
+<section id="ecrans" style="padding:72px 40px;border-bottom:2px solid #14110E;background:#EFC219">
+  <div style="max-width:1180px;margin:0 auto">
+    <p style="font-family:Barlow,sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 10px;opacity:.7">06 — Le système en action</p>
+    <h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(32px,5vw,56px);line-height:1;margin:0 0 14px;text-transform:uppercase">Le site, refondé</h2>
+    <p style="font-size:18px;line-height:1.5;max-width:60ch;margin:0 0 40px">Contre le « trop complexe » de l'existant : trois portes d'entrée par intention, une navigation réduite à cinq entrées, et la Mémoirothèque comme destination.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0;border-top:2px solid #14110E;border-left:2px solid #14110E">
+      <sc-for list="{{ screens }}" as="sc" hint-placeholder-count="8">
+        <div style="border-right:2px solid #14110E;border-bottom:2px solid #14110E;padding:22px;background:#F7F2E4">
+          <span style="font-family:Barlow,sans-serif;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.55">{{ sc.num }}</span>
+          <h3 style="font-family:'Archivo Black',sans-serif;font-size:20px;text-transform:uppercase;line-height:1.1;margin:8px 0 8px">{{ sc.title }}</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.5">{{ sc.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin-top:34px;display:flex;flex-wrap:wrap;gap:14px">
+      <a href="Mimesis.dc.html" style="background:#14110E;color:#F7F2E4;padding:15px 26px;font-weight:700;font-size:16px;box-shadow:5px 5px 0 #F0574F;transition:transform .14s cubic-bezier(.2,.8,.2,1),box-shadow .14s cubic-bezier(.2,.8,.2,1)" style-hover="transform:translate(-2px,-2px);box-shadow:8px 8px 0 #F0574F" style-active="transform:translate(1px,1px);box-shadow:none">Ouvrir la maquette interactive →</a>
+      <a href="ui_kits/site/index.html" style="border:2px solid #14110E;padding:13px 26px;font-weight:700;font-size:16px;color:#14110E;background:#F7F2E4;transition:transform .14s cubic-bezier(.2,.8,.2,1),box-shadow .14s cubic-bezier(.2,.8,.2,1)" style-hover="background:#EFC219;transform:translate(-2px,-2px);box-shadow:5px 5px 0 #14110E" style-active="transform:translate(1px,1px);box-shadow:none">Voir le UI kit</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CAVEATS / RESSOURCES ══ -->
+<section id="ressources" style="padding:72px 40px 30px;background:#14110E;color:#F7F2E4">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:44px">
+      <div>
+        <p style="font-family:Barlow,sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 10px;opacity:.6">07 — À trancher</p>
+        <h2 style="font-family:'Archivo Black',sans-serif;font-size:36px;line-height:1;margin:0 0 24px;text-transform:uppercase;color:#F7F2E4">Trois réserves</h2>
+        <div style="display:flex;flex-direction:column;gap:0;border-top:1px solid rgba(247,242,228,.25)">
+          <sc-for list="{{ caveats }}" as="cv" hint-placeholder-count="3">
+            <div style="padding:16px 0;border-bottom:1px solid rgba(247,242,228,.25)">
+              <div style="font-weight:700;font-size:16px;color:#EFC219">{{ cv.t }}</div>
+              <div style="font-size:14.5px;line-height:1.5;opacity:.85;margin-top:4px">{{ cv.b }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div>
+        <p style="font-family:Barlow,sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 10px;opacity:.6">Ressources</p>
+        <h2 style="font-family:'Archivo Black',sans-serif;font-size:36px;line-height:1;margin:0 0 24px;text-transform:uppercase;color:#F7F2E4">Où trouver quoi</h2>
+        <div style="display:flex;flex-direction:column;gap:0;border-top:1px solid rgba(247,242,228,.25)">
+          <sc-for list="{{ resources }}" as="rs" hint-placeholder-count="6">
+            <div style="padding:13px 0;border-bottom:1px solid rgba(247,242,228,.25);display:flex;gap:14px;align-items:baseline">
+              <code style="font-family:Barlow,sans-serif;font-size:12.5px;color:#EFC219;min-width:150px">{{ rs.path }}</code>
+              <span style="font-size:14.5px;opacity:.85">{{ rs.what }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:1180px;margin:48px auto 0;font-family:Barlow,sans-serif;font-size:11px;opacity:.5">Mimesis · Arts · Recherches · Actions — Montélimar, Drôme · Système de design v1.0</p>
+  </div>
+</section>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals() {
+    const ink='#14110E', paper='#F7F2E4', warm='#EDE4CE', yellow='#EFC219', coral='#F0574F';
+    return {
+      railItems: [
+        {label:'Intro', href:'#intro'},{label:'Principes', href:'#principes'},{label:'Couleurs', href:'#couleurs'},
+        {label:'Typo', href:'#typographie'},{label:'Motifs', href:'#motifs'},{label:'Composants', href:'#composants'},
+        {label:'Écrans', href:'#ecrans'},{label:'Ressources', href:'#ressources'}
+      ],
+      heroStats: [
+        {n:'4', label:'familles de composants'},
+        {n:'28', label:'composants documentés'},
+        {n:'8', label:'écrans du site'},
+        {n:'17', label:'cartes-spécimens'}
+      ],
+      principes: [
+        {num:'01', title:'De l\u2019imprimé à l\u2019écran', body:'Papier photocopié, surligneur, papier découpé, rubans scannés. Tout est carré et franc, rien n\u2019est mou.', bg:paper, fg:ink},
+        {num:'02', title:'L\u2019intention avant la structure', body:'On entre par « j\u2019ai besoin d\u2019aide », pas par l\u2019organigramme de l\u2019association.', bg:yellow, fg:ink},
+        {num:'03', title:'La couleur est une décision', body:'Pas de dégradés, pas de voile. Le texte reste à pleine opacité — le contraste se compose.', bg:ink, fg:paper},
+        {num:'04', title:'La parole, mot pour mot', body:'Les récits collectés sont cités dans les mots de qui les raconte, syntaxe intacte, prénom et date.', bg:coral, fg:'#fff'},
+        {num:'05', title:'La profondeur se dessine', body:'Ombres portées dures, jamais floues. Au survol, le bloc se soulève contre son ombre.', bg:warm, fg:ink}
+      ],
+      swatches: [
+        {name:'Encre', hex:'#14110E', role:'Texte, bordures'},
+        {name:'Papier', hex:'#F7F2E4', role:'Fond constant'},
+        {name:'Papier chaud', hex:'#EDE4CE', role:'Fond en creux'},
+        {name:'Jaune', hex:'#EFC219', role:'La voix — surligneur, bandes'},
+        {name:'Corail', hex:'#F0574F', role:'Attention, liens, adhésion'},
+        {name:'Orange', hex:'#F07818', role:'Accent collage'},
+        {name:'Bleu', hex:'#2E6FB7', role:'Accent + code projet'},
+        {name:'Vert', hex:'#3E7D4E', role:'Accent + code projet'},
+        {name:'Jaune doux', hex:'#F3E3A6', role:'Surlignage sous le mono'}
+      ],
+      pairings: [
+        {label:'Encre / papier', ratio:'14.8:1 ✓', bg:paper, fg:ink},
+        {label:'Encre / jaune', ratio:'10.6:1 ✓', bg:yellow, fg:ink},
+        {label:'Papier / encre', ratio:'14.8:1 ✓', bg:ink, fg:paper},
+        {label:'Blanc / corail', ratio:'3.6:1 — titres', bg:coral, fg:'#fff'}
+      ],
+      fonts: [
+        {name:'Archivo Black', role:'Titres display, capitales grasses', text:'RENDRE VISIBLES', sample:"font-family:'Archivo Black',sans-serif;font-size:clamp(30px,5vw,58px);line-height:.98;text-transform:uppercase;letter-spacing:-.03em"},
+        {name:'Barlow', role:'Corps de texte 15,5–19px, mesure 62ch', text:'Artistes, chercheur\u00b7ses et habitant\u00b7es travaillent ensemble.', sample:"font-family:Barlow,sans-serif;font-size:20px;line-height:1.5"},
+        {name:'Barlow 700', role:'Kickers, dates, métadonnées — capitales espacées', text:'RECHERCHE · CRÉATION · ACTION', sample:"font-family:Barlow,sans-serif;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase"}
+      ],
+      families: [
+        {name:'Core', count:'11', items:['Button','IconButton','Badge','Tag','Card','Highlight','Starburst','SectionHeading','Marquee','RibbonDivider','BrushArrow']},
+        {name:'Forms', count:'7', items:['Field','Input','Textarea','Select','Checkbox','Radio','Switch']},
+        {name:'Feedback', count:'4', items:['Dialog','Toast','Tooltip','Tabs']},
+        {name:'Content', count:'6', items:['EntryDoor','ProjectCard','EventRow','MemoryCard','DecadeChip','PersonCard']}
+      ],
+      screens: [
+        {num:'01', title:'Accueil', body:'Héros, trois portes d\u2019entrée, projets, expos, agenda.'},
+        {num:'02', title:'Page projet', body:'Mémoires de nos (grands-)mères — intentions, ateliers, restitutions.'},
+        {num:'03', title:'Mémoirothèque', body:'Frise interactive par décennie, cartes-récits en collage.'},
+        {num:'04', title:'Agenda', body:'Filtres à venir / passés, entrées datées.'},
+        {num:'05', title:'Adhésion & don', body:'Choix du palier, formulaire, échelle d\u2019impact.'},
+        {num:'06', title:'Collectif', body:'Portraits de l\u2019équipe par discipline.'},
+        {num:'07', title:'Contact', body:'Coordonnées, permanences, carte du territoire.'},
+        {num:'08', title:'Mobile', body:'Menu plein écran, trois portes sans défilement.'}
+      ],
+      caveats: [
+        {t:'Les polices sont des substitutions', b:'Anton, Playfair, Barlow, Space Mono approchent l\u2019imprimé. Les fichiers d\u2019origine changeraient les titres.'},
+        {t:'Ni logo, ni portraits, ni logos partenaires', b:'Emplacements en place et étiquetés. Envoyez la marque réelle si elle existe.'},
+        {t:'Contenu au-delà du site : plausible mais inventé', b:'Dates 2026, permanences, montants d\u2019impact — à corriger avant publication.'}
+      ],
+      resources: [
+        {path:'styles.css', what:'Le fichier unique à lier — importe tous les tokens'},
+        {path:'tokens/', what:'Couleurs, typo, espacements, bordures, ombres, mouvement'},
+        {path:'guidelines/', what:'17 cartes-spécimens des fondations'},
+        {path:'components/', what:'28 composants : .jsx, .d.ts, .prompt.md'},
+        {path:'ui_kits/site/', what:'Recréation navigable du site refondé'},
+        {path:'readme.md', what:'Le guide complet : contexte, écriture, fondations'}
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
