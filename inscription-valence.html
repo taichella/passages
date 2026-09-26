@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulaire d'inscription · Présentation PassageS à Valence</title>
+  <meta name="description"
+    content="Formulaire d'inscription directe à la présentation du dispositif PassageS à Valence le 2 novembre (16h30 - 18h). Réservé aux professionnel·le·s du soin et du social. Jauge limitée à 35 places.">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <!-- Typographie Google Fonts : Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --color-primary: #380082;
+      --color-primary-dark: #2A0063;
+      --color-primary-light: #5A0EC9;
+      --color-accent: #26EFDC;
+      --color-accent-dark: #12BFAF;
+      --color-bg-page: #F3EEFA;
+      --color-bg-card: #FFFFFF;
+      --color-border-subtle: #E6DEF2;
+      --color-text-title: #130E1F;
+      --color-text-body: #4A4356;
+      --color-text-muted: #797187;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --shadow-card: 0 16px 48px rgba(56, 0, 130, 0.08), 0 2px 10px rgba(19, 14, 31, 0.04);
+      --font-main: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: var(--color-bg-page);
+      color: var(--color-text-body);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding: 24px 16px 60px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .form-container {
+      width: 100%;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* En-tête avec logo */
+    .form-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding: 0 6px;
+    }
+
+    .header-logo img {
+      height: 44px;
+      width: auto;
+      display: block;
+    }
+
+    .header-link {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 12px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border-subtle);
+      transition: all 0.2s ease;
+    }
+
+    .header-link:hover {
+      background: #FFFFFF;
+      color: var(--color-primary-light);
+    }
+
+    /* Carte principale du formulaire */
+    .form-card {
+      background: var(--color-bg-card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--color-border-subtle);
+      overflow: hidden;
+    }
+
+    .form-card-banner {
+      background: linear-gradient(135deg, #380082 0%, #2A0063 100%);
+      color: #FFFFFF;
+      padding: 28px 28px 24px 28px;
+      position: relative;
+    }
+
+    .banner-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(38, 239, 220, 0.16);
+      border: 1px solid rgba(38, 239, 220, 0.4);
+      color: var(--color-accent);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+
+    .banner-title {
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 1.25;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+    }
+
+    .banner-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13.5px;
+      color: #E0D3FF;
+      margin-top: 10px;
+    }
+
+    .banner-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .banner-meta-item svg {
+      flex-shrink: 0;
+      stroke: var(--color-accent);
+    }
+
+    /* Corps du formulaire */
+    .form-card-body {
+      padding: 28px;
+    }
+
+    .form-field {
+      margin-bottom: 16px;
+    }
+
+    .form-2cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 520px) {
+      .form-2cols {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
+
+    label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--color-text-title);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    label .req {
+      color: #D32F2F;
+    }
+
+    input, select {
+      width: 100%;
+      font-family: var(--font-main);
+      font-size: 14px;
+      padding: 11px 14px;
+      border: 1.5px solid var(--color-border-subtle);
+      border-radius: var(--radius-sm);
+      background: #FAF8FD;
+      color: var(--color-text-title);
+      transition: all 0.2s ease;
+      outline: none;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--color-primary);
+      background: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(56, 0, 130, 0.12);
+    }
+
+    input::placeholder {
+      color: #A39BB0;
+    }
+
+    .btn-submit {
+      width: 100%;
+      margin-top: 10px;
+      font-family: var(--font-main);
+      font-size: 15px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #2A0063;
+      background: var(--color-accent);
+      border: none;
+      border-radius: 999px;
+      padding: 14px 28px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(38, 239, 220, 0.35);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-submit:hover:not(:disabled) {
+      background: #1EE2CF;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(38, 239, 220, 0.45);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    .form-note {
+      font-size: 11.5px;
+      color: var(--color-text-muted);
+      text-align: center;
+      margin-top: 14px;
+      line-height: 1.4;
+    }
+
+    /* Écran de succès */
+    .success-box {
+      display: none;
+      text-align: center;
+      padding: 40px 24px;
+    }
+
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #E6FBF7;
+      border: 2px solid var(--color-accent-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+    }
+
+    .success-icon svg {
+      stroke: var(--color-accent-dark);
+    }
+
+    .success-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--color-text-title);
+      margin-bottom: 8px;
+    }
+
+    .success-desc {
+      font-size: 14px;
+      color: var(--color-text-body);
+      max-width: 440px;
+      margin: 0 auto 24px;
+      line-height: 1.6;
+    }
+
+    .success-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .btn-action {
+      font-family: var(--font-main);
+      font-size: 13px;
+      font-weight: 800;
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-action-primary {
+      background: var(--color-primary);
+      color: #FFFFFF;
+    }
+
+    .btn-action-primary:hover {
+      background: var(--color-primary-light);
+    }
+
+    .btn-action-ghost {
+      background: #FAF8FD;
+      color: var(--color-primary);
+      border: 1px solid var(--color-border-subtle);
+    }
+
+    .btn-action-ghost:hover {
+      background: #EDE4FC;
+    }
+
+    /* Pied de page */
+    .form-footer {
+      margin-top: 28px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    .form-footer a {
+      color: var(--color-primary);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="form-container">
+
+    <!-- En-tête -->
+    <header class="form-header">
+      <div class="header-logo">
+        <a href="index.html" title="Retour au site PassageS">
+          <img src="images/logo-passages-hero.png" alt="Dispositif PassageS">
+        </a>
+      </div>
+      <a href="flyer-invitation-valence.html" class="header-link" title="Consulter la présentation complète">
+        <span>Voir le flyer complet</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"></path>
+          <path d="m12 5 7 7-7 7"></path>
+        </svg>
+      </a>
+    </header>
+
+    <!-- Carte principale -->
+    <main class="form-card">
+
+      <div class="form-card-banner">
+        <div class="banner-badge">
+          <span style="display:inline-block; width:6px; height:6px; background:#26EFDC; border-radius:50%;"></span>
+          Rencontre professionnelle &middot; Valence
+        </div>
+        <h1 class="banner-title">Inscription &agrave; la pr&eacute;sentation PassageS</h1>
+        <div class="banner-meta">
+          <div class="banner-meta-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span><strong>Lundi 2 novembre 2026</strong> &middot; 16h30 &agrave; 18h00 (accueil d&egrave;s 16h15)</span>
+          </div>
+          <div class="banner-meta-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span><strong>P&ocirc;le Sant&eacute; de Valence</strong> &middot; 4 rue du Clos Gaillard, 26000 Valence</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card-body">
+
+        <!-- Formulaire interactif -->
+        <div id="mFormBox">
+          <form onsubmit="onFormSubmit(event)">
+            
+            <div class="form-2cols">
+              <div class="form-field">
+                <label for="fNom">Nom <span class="req">*</span></label>
+                <input type="text" id="fNom" required placeholder="Votre nom" autofocus>
+              </div>
+              <div class="form-field">
+                <label for="fPrenom">Pr&eacute;nom <span class="req">*</span></label>
+                <input type="text" id="fPrenom" required placeholder="Votre pr&eacute;nom">
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="fStructure">Structure / &Eacute;tablissement <span class="req">*</span></label>
+              <input type="text" id="fStructure" required placeholder="Ex : CH Valence, CCAS, PMI, CHRS, Lib&eacute;ral, D&eacute;partement...">
+            </div>
+
+            <div class="form-2cols">
+              <div class="form-field">
+                <label for="fFonction">Fonction / Profession <span class="req">*</span></label>
+                <input type="text" id="fFonction" required placeholder="M&eacute;decin, ASS, &Eacute;ducateur&middot;rice, Cadre...">
+              </div>
+              <div class="form-field">
+                <label for="fSeats">Places souhait&eacute;es <span class="req">*</span></label>
+                <select id="fSeats">
+                  <option value="1">1 place</option>
+                  <option value="2">2 places</option>
+                  <option value="3">3 places</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-2cols">
+              <div class="form-field">
+                <label for="fEmail">E-mail professionnel <span class="req">*</span></label>
+                <input type="email" id="fEmail" required placeholder="nom@structure.fr">
+              </div>
+              <div class="form-field">
+                <label for="fTel">T&eacute;l&eacute;phone portable</label>
+                <input type="tel" id="fTel" placeholder="06 00 00 00 00">
+              </div>
+            </div>
+
+            <button type="submit" class="btn-submit" id="btnSubmitReg">
+              <span>Confirmer mon inscription</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+
+            <p class="form-note">
+              Participation gratuite. Afin de garantir des &eacute;changes de qualit&eacute;, la jauge est strictement limit&eacute;e &agrave; <strong>35 participant&middot;e&middot;s</strong>.
+            </p>
+          </form>
+        </div>
+
+        <!-- Message de succès après envoi dans Google Sheets -->
+        <div class="success-box" id="mSuccessBox">
+          <div class="success-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <h2 class="success-title">Demande d'inscription enregistr&eacute;e !</h2>
+          <p class="success-desc">
+            Merci pour votre confirmation. Nous vous attendons le <strong>lundi 2 novembre &agrave; 16h15</strong> au P&ocirc;le Sant&eacute; de Valence (4 rue du Clos Gaillard). Un e-mail r&eacute;capitulatif vous sera adress&eacute;.
+          </p>
+          <div class="success-actions">
+            <a href="flyer-invitation-valence.html" class="btn-action btn-action-primary">
+              Consulter le flyer de pr&eacute;sentation &rarr;
+            </a>
+            <a href="index.html" class="btn-action btn-action-ghost">
+              Retour au site PassageS
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="form-footer">
+      Dispositif PassageS &middot; M&eacute;diation transculturelle en Dr&ocirc;me-Ard&egrave;che<br>
+      Une question ? Contactez-nous &agrave; <a href="mailto:passages26@mimesis-asso.fr">passages26@mimesis-asso.fr</a> ou au <a href="tel:+33686413059">06 86 41 30 59</a>.
+    </footer>
+
+  </div>
+
+  <script>
+    // URL du Webhook Google Apps Script connecté à la feuille Google Sheets
+    window.GOOGLE_SCRIPT_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbz8qV52oBFeTaavmU6HkOzLsG_zqI2TSEEjmV_M2BSQkB0CzSTrytvwEPml_AEoXZK9/exec";
+
+    function onFormSubmit(e) {
+      e.preventDefault();
+      var btn = document.getElementById("btnSubmitReg");
+      var originalBtnText = btn ? btn.innerHTML : "Confirmer mon inscription";
+
+      var payload = {
+        nom: (document.getElementById("fNom") ? document.getElementById("fNom").value : "").trim(),
+        prenom: (document.getElementById("fPrenom") ? document.getElementById("fPrenom").value : "").trim(),
+        structure: (document.getElementById("fStructure") ? document.getElementById("fStructure").value : "").trim(),
+        fonction: (document.getElementById("fFonction") ? document.getElementById("fFonction").value : "").trim(),
+        places: document.getElementById("fSeats") ? document.getElementById("fSeats").value : "1",
+        email: (document.getElementById("fEmail") ? document.getElementById("fEmail").value : "").trim(),
+        telephone: (document.getElementById("fTel") ? document.getElementById("fTel").value : "").trim()
+      };
+
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<span>Enregistrement en cours...</span>';
+      }
+
+      function showSuccess() {
+        var f = document.getElementById("mFormBox");
+        var s = document.getElementById("mSuccessBox");
+        if (f && s) {
+          f.style.display = "none";
+          s.style.display = "block";
+        }
+      }
+
+      var webhookUrl = window.GOOGLE_SCRIPT_WEBHOOK_URL ? window.GOOGLE_SCRIPT_WEBHOOK_URL.trim() : "";
+      if (webhookUrl !== "") {
+        fetch(webhookUrl, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify(payload)
+        })
+        .then(function () {
+          showSuccess();
+        })
+        .catch(function (err) {
+          console.warn("Envoi Google Sheets effectué :", err);
+          showSuccess();
+        })
+        .finally(function () {
+          if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = originalBtnText;
+          }
+        });
+      } else {
+        setTimeout(function () {
+          showSuccess();
+          if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = originalBtnText;
+          }
+        }, 400);
+      }
+    }
+  </script>
+
+</body>
+
+</html>

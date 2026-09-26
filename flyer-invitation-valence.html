@@ -1463,6 +1463,25 @@
         closeModal();
       }
     });
+
+    // Auto-ouverture du formulaire modal d'inscription (form + Google Sheets)
+    function checkAutoOpen() {
+      var hash = window.location.hash;
+      var search = window.location.search;
+      if (hash === "#inscription" || hash === "#modal" || hash === "#formulaire" ||
+          search.indexOf("inscription") !== -1 || search.indexOf("modal") !== -1) {
+        setTimeout(function () {
+          openModal();
+        }, 150);
+      }
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", checkAutoOpen);
+    } else {
+      checkAutoOpen();
+    }
+    window.addEventListener("hashchange", checkAutoOpen);
   </script>
 
 </body>
